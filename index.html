@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bargavi Sivaraman — Portfolio</title>
+  <meta name="description" content="Bargavi Sivaraman — CS student and NASA/JPL ARCS Research Fellow building AI and machine learning systems. Research, experience, and projects." />
+  <meta name="author" content="Bargavi Sivaraman" />
+  <link rel="canonical" href="https://bargavi-codes.netlify.app/" />
+  <link rel="icon" href="assets/images/favicon.png" type="image/png" />
+
+  <!-- Open Graph / social link previews -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bargavi Sivaraman — Portfolio" />
+  <meta property="og:description" content="CS student and NASA/JPL ARCS Research Fellow building AI and machine learning systems." />
+  <meta property="og:url" content="https://bargavi-codes.netlify.app/" />
+  <meta property="og:image" content="https://bargavi-codes.netlify.app/assets/images/profile.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bargavi Sivaraman — Portfolio" />
+  <meta name="twitter:description" content="CS student and NASA/JPL ARCS Research Fellow building AI and machine learning systems." />
+  <meta name="twitter:image" content="https://bargavi-codes.netlify.app/assets/images/profile.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="assets/images/profile.jpg" fetchpriority="high" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #080808;
+      --deep: #0f0e0c;
+      --card: #131210;
+      --border: rgba(201,168,76,0.15);
+      --gold: #c9a84c;
+      --gold-dim: rgba(201,168,76,0.35);
+      --gold-glow: rgba(201,168,76,0.08);
+      --cream: #ece4d4;
+      --muted: #6b6358;
+      --muted2: #3a3530;
+      --nasa-blue: #0b3d91;
+      --nasa-red: #fc3d21;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--cream); font-family: 'Syne', sans-serif; cursor: none; overflow-x: hidden; }
+
+    /* CURSOR */
+    #cursor { position: fixed; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s ease; }
+    #cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--gold-dim); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.15s ease; }
+
+    /* GRAIN */
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 200px; pointer-events: none; z-index: 1000; opacity: 0.45; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; padding: 28px 60px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(8,8,8,0.95), transparent); backdrop-filter: blur(2px); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; letter-spacing: 0.04em; color: var(--cream); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s ease; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 60px 80px; position: relative; overflow: hidden; gap: 60px; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 60%), radial-gradient(ellipse 50% 80% at 10% 90%, rgba(201,168,76,0.04) 0%, transparent 50%), linear-gradient(180deg, var(--black) 0%, var(--deep) 100%); }
+    .hero-left { position: relative; z-index: 3; max-width: 500px; }
+    .hero-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; }
+    .hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 7.5rem); font-weight: 300; line-height: 0.92; letter-spacing: -0.02em; color: var(--cream); opacity: 0; animation: fadeUp 1s ease 0.5s forwards; }
+    .hero-name em { font-style: italic; color: var(--gold); }
+    .hero-role { font-size: clamp(0.85rem, 1.5vw, 1rem); font-weight: 400; color: var(--muted); margin-top: 28px; max-width: 520px; line-height: 1.75; opacity: 0; animation: fadeUp 0.9s ease 0.8s forwards; }
+    .hero-role strong { color: var(--cream); }
+    .hero-cta { margin-top: 40px; display: flex; gap: 16px; align-items: center; opacity: 0; animation: fadeUp 0.9s ease 1.1s forwards; }
+    .btn-primary { padding: 14px 32px; background: var(--gold); color: var(--black); font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: none; cursor: none; transition: all 0.3s ease; }
+    .btn-primary:hover { background: var(--cream); transform: translateY(-2px); }
+    .btn-ghost { padding: 14px 32px; border: 1px solid var(--muted2); color: var(--muted); font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; cursor: none; transition: all 0.3s ease; }
+    .btn-ghost:hover { border-color: var(--gold-dim); color: var(--cream); }
+
+    /* HERO PHOTO */
+    .hero-photo-wrap { position: relative; z-index: 3; opacity: 0; animation: fadeIn 1.2s ease 0.9s forwards; }
+    .hero-photo-frame { position: relative; width: 100%; max-width: 340px; }
+    .hero-photo-frame::before { content: ''; position: absolute; inset: -2px; background: linear-gradient(135deg, var(--gold), transparent 60%); z-index: 0; }
+    .hero-photo-frame::after { content: ''; position: absolute; top: 16px; left: 16px; right: -16px; bottom: -16px; border: 1px solid var(--gold-dim); z-index: -1; }
+    .hero-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; position: relative; z-index: 1; filter: grayscale(20%) contrast(1.05); }
+    .hero-photo-badge { position: absolute; bottom: -20px; left: -20px; z-index: 10; background: var(--card); border: 1px solid var(--border); padding: 14px 20px; display: flex; align-items: center; gap: 14px; }
+    .badge-nasa { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+    .badge-nasa-logo { display: flex; align-items: center; gap: 6px; }
+    .nasa-worm { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: white; letter-spacing: -0.02em; }
+    .nasa-worm .nasa-a { display: inline-block; }
+    .badge-title { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; }
+    .badge-sub { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.1em; color: var(--muted); }
+
+    /* HERO STATS */
+    .hero-stats-row { display: flex; gap: 40px; margin-top: 48px; opacity: 0; animation: fadeUp 0.9s ease 1.3s forwards; }
+    .hero-stat { border-left: 1px solid var(--gold-dim); padding-left: 16px; }
+    .hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--gold); line-height: 1; }
+    .hero-stat-label { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+
+    /* SECTION BASE */
+    section { padding: 120px 60px; position: relative; }
+    .section-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
+    .section-label::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; color: var(--cream); }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    /* ABOUT */
+    #about { background: var(--deep); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 64px; align-items: start; }
+    .about-bio { font-size: 1.05rem; line-height: 1.85; color: rgba(236,228,212,0.7); }
+    .about-bio strong { color: var(--cream); font-weight: 600; }
+    .about-details { display: flex; flex-direction: column; gap: 28px; }
+    .detail-block { border-left: 1px solid var(--border); padding-left: 24px; }
+    .detail-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .detail-value { font-size: 0.9rem; color: var(--cream); line-height: 1.65; }
+    .cert-list { display: flex; flex-direction: column; gap: 6px; }
+    .cert-item { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: rgba(236,228,212,0.65); }
+    .cert-item::before { content: '✦'; color: var(--gold); font-size: 0.55rem; flex-shrink: 0; }
+
+    /* NASA PROJECTS */
+    #projects { background: var(--black); }
+    .nasa-header-bar { display: flex; align-items: center; gap: 24px; margin-bottom: 64px; margin-top: 20px; padding: 20px 28px; border: 1px solid rgba(11,61,145,0.4); background: rgba(11,61,145,0.06); position: relative; overflow: hidden; }
+    .nasa-header-bar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--nasa-red), var(--nasa-blue)); }
+    .nasa-emblem { width: 64px; height: 64px; flex-shrink: 0; }
+    .nasa-header-text { flex: 1; }
+    .nasa-header-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--cream); margin-bottom: 4px; }
+    .nasa-header-sub { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: rgba(201,168,76,0.7); text-transform: uppercase; }
+    .nasa-badge-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .nasa-badge-pill { padding: 4px 12px; background: rgba(252,61,33,0.12); border: 1px solid rgba(252,61,33,0.3); font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; color: var(--nasa-red); text-transform: uppercase; }
+    .nasa-badge-pill.blue { background: rgba(11,61,145,0.12); border-color: rgba(11,61,145,0.4); color: #4a8fe8; }
+
+    .project-featured { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2px; margin-bottom: 2px; }
+    .project-card { background: var(--card); border: 1px solid var(--border); padding: 44px; position: relative; overflow: hidden; transition: all 0.4s ease; cursor: none; }
+    .project-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--gold-glow), transparent 60%); opacity: 0; transition: opacity 0.4s ease; }
+    .project-card:hover { border-color: var(--gold-dim); transform: translateY(-3px); }
+    .project-card:hover::before { opacity: 1; }
+    .project-card.nasa-accent { border-top: 2px solid var(--nasa-blue); }
+    .project-card.nasa-accent:hover { border-top-color: var(--gold); }
+    .project-card-full { grid-column: 1 / -1; }
+
+    .proj-logos { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .proj-nasa-logo { display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid rgba(11,61,145,0.35); background: rgba(11,61,145,0.08); }
+    .proj-nasa-text { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 700; color: white; letter-spacing: 0.05em; }
+    .proj-jpl-badge { padding: 6px 14px; border: 1px solid rgba(252,61,33,0.3); background: rgba(252,61,33,0.06); font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; color: #fc7a5f; text-transform: uppercase; }
+    .proj-arcs-badge { padding: 6px 14px; border: 1px solid var(--gold-dim); background: var(--gold-glow); font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; }
+
+    .proj-status { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px; }
+    .proj-dot { width: 6px; height: 6px; border-radius: 50%; background: #4caf50; box-shadow: 0 0 8px rgba(76,175,80,0.6); animation: pulse 2s ease-in-out infinite; }
+    .proj-status-text { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; color: #4caf50; text-transform: uppercase; }
+
+    .proj-title { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 600; line-height: 1.15; color: var(--cream); margin-bottom: 14px; }
+    .proj-desc { font-size: 0.87rem; line-height: 1.78; color: rgba(236,228,212,0.55); margin-bottom: 24px; }
+    .proj-highlights { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .proj-highlight { display: flex; align-items: flex-start; gap: 10px; font-size: 0.8rem; color: rgba(236,228,212,0.5); line-height: 1.5; }
+    .proj-highlight::before { content: '→'; color: var(--gold); flex-shrink: 0; font-size: 0.7rem; margin-top: 2px; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .proj-tag { padding: 4px 12px; border: 1px solid var(--muted2); font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; transition: all 0.3s ease; }
+    .project-card:hover .proj-tag { border-color: var(--gold-dim); color: var(--gold); }
+    .proj-num { position: absolute; top: 24px; right: 28px; font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: rgba(201,168,76,0.06); line-height: 1; }
+
+    /* SKILLS */
+    #skills { background: var(--deep); }
+    .skills-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; margin-top: 64px; align-items: start; }
+    .skill-cat-title { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .skill-bars { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .skill-row { display: flex; flex-direction: column; gap: 6px; }
+    .skill-name-row { display: flex; justify-content: space-between; align-items: center; }
+    .skill-name { font-size: 0.82rem; color: var(--cream); font-weight: 500; }
+    .skill-pct { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); }
+    .skill-track { height: 2px; background: var(--muted2); position: relative; overflow: hidden; }
+    .skill-fill { position: absolute; top: 0; left: 0; height: 100%; background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.5)); width: 0; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
+    .skills-cloud { display: flex; flex-wrap: wrap; gap: 12px; align-content: start; }
+    .skill-pill { padding: 10px 18px; border: 1px solid var(--border); font-family: 'Syne', sans-serif; font-size: 0.78rem; color: rgba(236,228,212,0.6); transition: all 0.3s ease; cursor: none; }
+    .skill-pill:hover { border-color: var(--gold-dim); color: var(--gold); background: var(--gold-glow); }
+
+    /* EXPERIENCE */
+    #work { background: var(--black); }
+    .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2px; margin-top: 64px; }
+    .work-card { background: var(--card); border: 1px solid var(--border); padding: 36px; position: relative; overflow: hidden; transition: all 0.4s ease; cursor: none; }
+    .work-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--gold-glow), transparent 60%); opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
+    .work-card:hover { border-color: var(--gold-dim); transform: translateY(-3px); }
+    .work-card:hover::before { opacity: 1; }
+    .card-org { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
+    .card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; line-height: 1.2; color: var(--cream); margin-bottom: 12px; }
+    .card-date { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 18px; }
+    .card-desc { font-size: 0.85rem; line-height: 1.75; color: rgba(236,228,212,0.5); }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+    .tag { padding: 3px 10px; border: 1px solid var(--muted2); font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; transition: all 0.3s ease; }
+    .work-card:hover .tag { border-color: var(--gold-dim); color: var(--gold); }
+    .card-num { position: absolute; top: 24px; right: 24px; font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: rgba(201,168,76,0.06); line-height: 1; }
+
+    /* CONTACT */
+    #contact { background: var(--deep); }
+    .contact-inner { margin-top: 64px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; }
+    .contact-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; font-style: italic; line-height: 1.2; color: rgba(236,228,212,0.5); margin-top: 16px; }
+    .contact-tagline span { color: var(--gold); font-style: normal; }
+    .contact-links { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+    .contact-link { display: flex; align-items: center; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--muted2); text-decoration: none; transition: all 0.3s ease; }
+    .contact-link:first-child { border-top: 1px solid var(--muted2); }
+    .contact-link:hover { padding-left: 10px; }
+    .contact-link-icon { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: var(--gold); transition: all 0.3s ease; flex-shrink: 0; }
+    .contact-link:hover .contact-link-icon { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .contact-link-info { flex: 1; }
+    .contact-link-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .contact-link-value { font-size: 0.9rem; color: var(--cream); font-weight: 500; }
+    .contact-link-arrow { font-size: 1rem; color: var(--muted2); transition: all 0.3s ease; }
+    .contact-link:hover .contact-link-arrow { color: var(--gold); transform: translateX(4px); }
+
+    /* FOOTER */
+    footer { padding: 40px 60px; border-top: 1px solid var(--muted2); display: flex; justify-content: space-between; align-items: center; background: var(--black); }
+    .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--muted); }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; color: var(--muted); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    @media (max-width: 960px) {
+      nav { padding: 24px 28px; }
+      .nav-links { display: none; }
+      section { padding: 80px 28px; }
+      #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 60px 80px; position: relative; overflow: hidden; gap: 60px; }
+      .hero-photo-wrap { order: -1; }
+      .hero-photo-frame { position: relative; width: 100%; max-width: 340px; }
+      .about-grid, .skills-layout, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .project-featured { grid-template-columns: 1fr; }
+      footer { padding: 32px 28px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  
+  .work-card a { position: relative; z-index: 5; pointer-events: auto; cursor: pointer; }
+  .work-card a:hover { opacity: 0.85; }
+
+    .pop-img { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; cursor: none; }
+    .pop-img:hover { transform: scale(1.06) translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); z-index: 5; position: relative; }
+    </style>
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <nav>
+    <a class="nav-logo" href="#hero">B<span>.</span>S</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Research</a></li>
+      <li><a href="#work">Experience</a></li>
+      <li><a href="#standout">Featured</a></li>
+      <li><a href="#built-projects">Side Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#beyond">Beyond</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+
+
+
+  
+
+    <div class="hero-left">
+      <div class="hero-tag">Portfolio · 2026 · Los Angeles, CA</div>
+      <h1 class="hero-name">Bargavi<br><em>Sivaraman</em></h1>
+      <p class="hero-role">
+        CS student at CSUN & <strong>NASA/JPL ARCS Research Fellow</strong> — building intelligent, full-stack systems at the intersection of machine learning, data engineering, and human-centered software.
+      </p>
+      <div class="hero-stats-row">
+        <div class="hero-stat">
+          <div class="hero-stat-num">2+</div>
+          <div class="hero-stat-label">Years Exp.</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">5+</div>
+          <div class="hero-stat-label">Certifications</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">JPL</div>
+          <div class="hero-stat-label">NASA Research</div>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn-primary" href="#projects">View Projects</a>
+        <a class="btn-ghost" href="#contact">Get In Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+        <img class="hero-photo" src="assets/images/profile.jpg" alt="Bargavi Sivaraman" width="850" height="990" loading="eager" fetchpriority="high" decoding="async" />
+        <div class="hero-photo-badge">
+          <img src="assets/images/nasa-jpl-logo.png" alt="NASA JPL" style="height:54px;object-fit:contain;" width="300" height="265" loading="lazy" decoding="async" />
+          <div class="badge-nasa">
+            <div class="badge-title">ARCS Research Fellow</div>
+            <div class="badge-sub">Astro-Cultivator · NASA/JPL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label reveal">About Me</div>
+    <h2 class="section-title reveal reveal-delay-1">Turning complex problems<br>into <em>scalable,</em><br>real-world systems</h2>
+    <div class="about-grid">
+      <div class="about-bio reveal reveal-delay-2">
+        <p>I'm a <strong>Computer Science student at CSUN</strong> driven by the challenge of turning complex problems into elegant, scalable systems. My work spans machine learning pipelines, full-stack development, and data-driven engineering.</p>
+        <br>
+        <p>As an <strong>ARCS Research Fellow powered by NASA &amp; JPL</strong>, I contribute to the Astro-Cultivator project — designing AI-driven plant monitoring systems using hyperspectral imagery and multi-sensor fusion. I thrive in environments where <strong>technical depth meets real-world impact.</strong></p>
+        <br>
+        <p>I build with Java, Python, React, SQL, and MongoDB — and I'm always hungry to ship systems that matter. Let's build what's next.</p>
+      </div>
+      <div class="about-details">
+        <div class="detail-block reveal reveal-delay-2">
+          <div class="detail-label">Education</div>
+          <div class="detail-value">B.S. Computer Science<br>California State University, Northridge<br><span style="color:var(--muted);font-size:0.82rem;">Aug 2022 – Dec 2026</span></div>
+        </div>
+        <div class="detail-block reveal reveal-delay-3">
+          <div class="detail-label">Languages</div>
+          <div class="detail-value">English (Professional) · Tamil (Native)<br>Korean · Spanish · Hindi · Telugu</div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NASA PROJECTS -->
+  <section id="projects">
+    <div class="section-label reveal">Research Projects</div>
+    <h2 class="section-title reveal reveal-delay-1">NASA/JPL<br><em>Research Work</em></h2>
+
+    <div class="nasa-header-bar reveal reveal-delay-2">
+      <img src="assets/images/nasa-jpl-logo.png" alt="NASA JPL" style="height:52px;object-fit:contain;" width="300" height="265" loading="lazy" decoding="async" />
+      <div class="nasa-header-text">
+        <div class="nasa-header-title">ARCS Research Cohort 2025 — NASA/JPL Partner</div>
+        <div class="nasa-header-sub">California State University, Northridge · Astro-Cultivator Initiative</div>
+      </div>
+      <div class="nasa-badge-right">
+        <div class="nasa-badge-pill">Active Research</div>
+        <div class="nasa-badge-pill blue">Sep 2025 – Present</div>
+      </div>
+    </div>
+
+    <div class="project-featured reveal reveal-delay-2">
+      <!-- Featured project - full width -->
+      <div class="project-card nasa-accent project-card-full">
+        <div class="proj-num">01</div>
+        <div class="proj-logos">
+          <div class="proj-nasa-logo">
+            <img src="assets/images/nasa-jpl-logo.png" alt="NASA JPL" style="height:32px;object-fit:contain;" width="300" height="265" loading="lazy" decoding="async" />
+          </div>
+          <div class="proj-jpl-badge">JPL Partner</div>
+          <div class="proj-arcs-badge">ARCS Fellow</div>
+        </div>
+        <div class="proj-status">
+          <div class="proj-dot"></div>
+          <div class="proj-status-text">Active — Sept 2025 to Present</div>
+        </div>
+        <div class="proj-title">Astro-Cultivator: AI-Driven Plant Monitoring System</div>
+        <div class="proj-desc">
+          End-to-end machine learning system for automated plant health monitoring using multi-modal sensor fusion. Designed to support NASA's research into controlled environment agriculture — enabling early detection of plant stress conditions to advance food production systems for long-duration space missions.
+        </div>
+        <div class="proj-highlights">
+          <div class="proj-highlight">Designed and implemented ML pipelines using RealSense depth data and hyperspectral imagery for plant stress classification (drought, discoloration, wilting)</div>
+          <div class="proj-highlight">Developed scalable Python-based data preprocessing and feature engineering workflows to clean and integrate multi-modal datasets</div>
+          <div class="proj-highlight">Built depth-based segmentation and plant trait extraction modules to improve model robustness and classification accuracy</div>
+          <div class="proj-highlight">Trained and validated classification models using structured experimentation and performance tracking frameworks</div>
+          <div class="proj-highlight">Collaborated in Agile sprints with cross-functional Biology and Robotics teams; contributed to system architecture discussions and backend workflow design</div>
+        </div>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Machine Learning</span>
+          <span class="proj-tag">Computer Vision</span>
+          <span class="proj-tag">Hyperspectral Imaging</span>
+          <span class="proj-tag">Intel RealSense</span>
+          <span class="proj-tag">Feature Engineering</span>
+          <span class="proj-tag">Data Preprocessing</span>
+          <span class="proj-tag">Classification Models</span>
+          <span class="proj-tag">Agile / Jira</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- sub cards -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; margin-top:2px;">
+
+      <div class="project-card nasa-accent reveal reveal-delay-2">
+        <div class="proj-num">02</div>
+        <div class="proj-logos" style="margin-bottom:14px;">
+          <div class="proj-nasa-logo">
+            <img src="assets/images/nasa-jpl-logo.png" alt="NASA JPL" style="height:26px;object-fit:contain;" width="300" height="265" loading="lazy" decoding="async" />
+          </div>
+          <div class="proj-jpl-badge">Research Pipeline</div>
+        </div>
+        <div class="proj-title" style="font-size:1.3rem;">Multi-Sensor Data Fusion Framework</div>
+        <div class="proj-desc">Developed a unified preprocessing pipeline integrating depth, RGB, and hyperspectral sensor streams into cohesive multi-modal datasets for downstream ML model training.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Multi-sensor Fusion</span>
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Data Engineering</span>
+        </div>
+      </div>
+
+<div class="project-card nasa-accent reveal reveal-delay-3">
+        <div class="proj-num">03</div>
+        <div class="proj-logos" style="margin-bottom:14px;">
+          <div class="proj-nasa-logo">
+            <img src="assets/images/nasa-jpl-logo.png" alt="NASA JPL" style="height:26px;object-fit:contain;" width="300" height="265" loading="lazy" decoding="async" />
+          </div>
+          <div class="proj-jpl-badge">ML Systems</div>
+        </div>
+        <div class="proj-title" style="font-size:1.3rem;">Plant Stress Classification Models</div>
+        <div class="proj-desc">Trained and validated early stress detection classifiers for drought, discoloration, and wilting conditions using structured experimentation, performance benchmarking, and iterative model evaluation.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Classification</span>
+          <span class="proj-tag">Model Evaluation</span>
+          <span class="proj-tag">ML Pipelines</span>
+        </div>
+      </div>
+
+    </div>
+  
+    <!-- Research Gallery -->
+    <div class="reveal reveal-delay-3" style="margin-top:48px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:24px;">
+        <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;">📸 In the Lab &amp; At CSUNposium</div>
+        <a href="https://csun-arcs-astrocultivators.github.io/astro-cultivators-data-analysis-website/index.html#home" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:7px 16px;display:inline-block;transition:all 0.3s ease;">Project Site ↗</a>
+      </div>
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:auto auto;gap:12px;">
+        <img src="assets/images/research-presenting-csunposium.jpg" alt="Bargavi presenting at CSUNposium" style="width:100%;height:100%;object-fit:cover;border:1px solid var(--border);grid-row:1/3;min-height:320px;"  class="pop-img" width="900" height="697" loading="lazy" decoding="async" />
+        <img src="assets/images/research-growth-chamber.jpg" alt="Growth chamber data collection" style="width:100%;height:100%;object-fit:cover;border:1px solid var(--border);"  class="pop-img" width="900" height="675" loading="lazy" decoding="async" />
+        <img src="assets/images/research-poster.jpg" alt="Presenting research poster" style="width:100%;height:100%;object-fit:cover;border:1px solid var(--border);"  class="pop-img" width="900" height="589" loading="lazy" decoding="async" />
+        <img src="assets/images/research-plant-imaging.jpg" alt="Plant imaging setup" style="width:100%;height:100%;object-fit:cover;border:1px solid var(--border);"  class="pop-img" width="900" height="673" loading="lazy" decoding="async" />
+        <img src="assets/images/research-team-csunposium.jpg" alt="Research team at CSUNposium" style="width:100%;height:100%;object-fit:cover;border:1px solid var(--border);"  class="pop-img" width="674" height="900" loading="lazy" decoding="async" />
+      </div>
+      <p style="font-size:0.78rem;line-height:1.7;color:rgba(236,228,212,0.45);margin-top:16px;font-family:var(--mono);">
+        Note: this project's codebase is maintained under CSUN ARCS / NASA-affiliated organizational access and isn't publicly hosted, per program guidelines — the project site above documents the data analysis and results.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="work">
+    <div class="section-label reveal">Experience</div>
+    <h2 class="section-title reveal reveal-delay-1">Where I've<br><em>made impact</em></h2>
+    <div class="work-grid">
+      <div class="work-card reveal reveal-delay-1">
+        <div class="card-num">01</div>
+        <div class="card-org">ARCS at CSUN · NASA/JPL</div>
+        <div class="card-title">ARCS Research Fellow</div>
+        
+        <div class="card-desc">Designing end-to-end ML pipelines for the Astro-Cultivator project. Contributing to system architecture, backend workflow design, and cross-functional Agile collaboration.</div>
+        <div class="card-tags"><span class="tag">Python</span><span class="tag">ML</span><span class="tag">Computer Vision</span><span class="tag">Agile</span></div>
+      </div>
+      <div class="work-card reveal reveal-delay-2">
+        <div class="card-num">02</div>
+        <div class="card-org">Associated Students · CSUN · Feb 2026 – Present</div>
+        <div class="card-title">Technical Operations Intern</div>
+        
+        <div class="card-desc">Generate and analyze monthly 801A reporting datasets, performing DRDP comparisons to evaluate child performance trends and ensure compliance accuracy.</div>
+        <div class="card-tags"><span class="tag">Agile Methodologies</span><span class="tag">Data Visualization</span><span class="tag">SQL</span></div>
+      </div>
+      <div class="work-card reveal reveal-delay-3">
+        <div class="card-num">03</div>
+        <div class="card-org">Associated Students · CSUN · Oct 2023 – Present</div>
+        <div class="card-title">Student Assistant — Front Desk &amp; IT Support</div>
+        
+        <div class="card-desc">Maintained and updated student enrollment data across state and university systems, ensuring accuracy and compliance with institutional and regulatory standards.</div>
+        <div class="card-tags"><span class="tag">Internal Audits</span><span class="tag">Organization</span><span class="tag">IT Support</span></div>
+      </div>
+      <div class="work-card reveal reveal-delay-4">
+        <div class="card-num">04</div>
+        <div class="card-org">Associated Students · CSUN · Feb – Apr 2026</div>
+        <div class="card-title">Scrum Master</div>
+        
+        <div class="card-desc">Introduced and implemented Jira to establish a structured Agile workflow with centralized sprint tracking and task management.</div>
+        <div class="card-tags"><span class="tag">Scrum</span><span class="tag">Jira</span><span class="tag">Agile Methodologies</span><span class="tag">Communication</span></div>
+      </div>
+      <div class="work-card reveal reveal-delay-5">
+        <div class="card-num">05</div>
+        <div class="card-org">ETHIX</div>
+        <div class="card-title">Product &amp; Systems Engineer</div>
+        
+        <div class="card-desc">Built web tools for inventory/order tracking, delivered frontend performance improvements, and automated operational workflows.</div>
+        <div class="card-tags"><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">Analytics</span><span class="tag">Automation</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  
+  
+  <!-- STANDOUT PROJECTS -->
+  <section id="standout" style="background:var(--deep);">
+    <div class="section-label reveal">Featured Work</div>
+    <h2 class="section-title reveal reveal-delay-1">Standout<br><em>projects</em></h2>
+
+    <div style="display:flex;flex-direction:column;gap:32px;margin-top:64px;">
+
+      <!-- Nexume.ai - Full width featured -->
+      <div class="reveal reveal-delay-2" style="background:var(--card);border:1px solid var(--border);padding:40px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,0.2));"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+              <div style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;">🚧 Actively Building</div>
+              <div style="font-family:var(--mono);font-size:0.55rem;padding:3px 10px;border:1px solid rgba(251,146,60,0.3);color:#fb923c;letter-spacing:0.08em;">adding features daily</div>
+            </div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--cream);line-height:1.1;margin-bottom:8px;">Nexume<span style="color:var(--gold);">.ai</span></h3>
+            <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;color:var(--muted);margin-bottom:20px;">AI-Powered Job Application Platform</div>
+            
+            <!-- Why I built it -->
+            <div style="background:rgba(201,168,76,0.04);border-left:2px solid var(--gold-dim);padding:16px 20px;margin-bottom:20px;">
+              <div style="font-family:var(--mono);font-size:0.55rem;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">💡 Why I built this</div>
+              <p style="font-size:0.88rem;line-height:1.8;color:rgba(236,228,212,0.7);">
+                As someone deep in the job search grind myself, I kept jumping between five different tools — one for resume feedback, another for cover letters, a spreadsheet for tracking applications, LinkedIn for research... it was exhausting. I thought: <em style="color:var(--cream);">why isn't all of this in one place?</em>
+              </p>
+              <p style="font-size:0.88rem;line-height:1.8;color:rgba(236,228,212,0.7);margin-top:10px;">
+                So I decided to build it myself. Nexume started as a weekend experiment and turned into a full AI product I'm genuinely proud of. It's also been my deepest dive into building end-to-end AI systems — from prompt engineering to full-stack deployment. I'm still shipping features weekly based on real user feedback, and honestly, it's the most fun I've had coding.
+              </p>
+            </div>
+
+            <p style="font-size:0.88rem;line-height:1.8;color:rgba(236,228,212,0.6);margin-bottom:20px;">ATS resume scorer, keyword gap analysis, AI bullet rewrites, cover letter generator, and job tracker — all in one platform. Built end-to-end and actively improving.</p>
+            
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+              <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OpenAI API</span><span class="tag">React</span><span class="tag">ATS Scoring</span><span class="tag">NLP</span>
+            </div>
+            <div style="display:flex;gap:12px;">
+              <a href="https://nexume-ai.vercel.app/" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--black);text-decoration:none;background:var(--gold);padding:10px 24px;display:inline-block;">Live ↗</a>
+              <a href="https://github.com/Bargavisivaraman/nexume-ai" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:10px 24px;display:inline-block;">GitHub ↗</a>
+            </div>
+          </div>
+          <!-- Nexume visual -->
+          <div style="position:relative;">
+            <svg width="100%" viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg">
+              <rect width="340" height="260" fill="#0d0d1a" rx="10"/>
+              <radialGradient id="nxGrad" cx="40%" cy="30%" r="60%">
+                <stop offset="0%" stop-color="#a855f7" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#0d0d1a" stop-opacity="0"/>
+              </radialGradient>
+              <rect width="340" height="260" fill="url(#nxGrad)" rx="10"/>
+              <rect x="0" y="0" width="340" height="36" fill="rgba(255,255,255,0.03)" rx="10"/>
+              <text x="16" y="23" fill="#a855f7" font-size="11" font-family="sans-serif" font-weight="bold">Nexume.ai</text>
+              <rect x="90" y="10" width="52" height="16" rx="8" fill="#a855f7"/>
+              <text x="116" y="21" text-anchor="middle" fill="white" font-size="7" font-family="sans-serif">Resume</text>
+              <text x="155" y="23" fill="rgba(255,255,255,0.3)" font-size="7" font-family="sans-serif">Cover Letter</text>
+              <text x="215" y="23" fill="rgba(255,255,255,0.3)" font-size="7" font-family="sans-serif">Tracker</text>
+              <rect x="10" y="46" width="320" height="80" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(168,85,247,0.15)" stroke-width="1"/>
+              <text x="170" y="65" text-anchor="middle" fill="#a855f7" font-size="7" font-family="sans-serif" letter-spacing="2">NEXUME.AI</text>
+              <text x="170" y="82" text-anchor="middle" fill="white" font-size="14" font-family="sans-serif" font-weight="bold">Get Hired Smarter</text>
+              <text x="170" y="97" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="sans-serif">ATS score · keyword gap · AI rewrites · cover letter</text>
+              <rect x="95" y="106" width="150" height="14" rx="7" fill="url(#nxBtn)"/>
+              <defs><linearGradient id="nxBtn" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#ec4899"/></linearGradient></defs>
+              <text x="170" y="117" text-anchor="middle" fill="white" font-size="7" font-family="sans-serif" font-weight="bold">Analyze My Resume</text>
+              <!-- ATS Score -->
+              <rect x="10" y="136" width="150" height="55" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(168,85,247,0.12)" stroke-width="1"/>
+              <text x="20" y="152" fill="rgba(255,255,255,0.3)" font-size="6" font-family="sans-serif">ATS Score</text>
+              <text x="20" y="172" fill="#a855f7" font-size="22" font-family="monospace" font-weight="bold">87</text>
+              <text x="50" y="172" fill="rgba(255,255,255,0.3)" font-size="10" font-family="monospace">/100</text>
+              <rect x="20" y="178" width="130" height="5" rx="2" fill="rgba(255,255,255,0.06)"/>
+              <rect x="20" y="178" width="113" height="5" rx="2" fill="#a855f7" opacity="0.7"/>
+              <!-- Keywords -->
+              <rect x="168" y="136" width="162" height="55" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(168,85,247,0.12)" stroke-width="1"/>
+              <text x="178" y="152" fill="rgba(255,255,255,0.3)" font-size="6" font-family="sans-serif">Missing Keywords</text>
+              <rect x="178" y="157" width="55" height="10" rx="5" fill="rgba(239,68,68,0.2)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
+              <text x="205" y="165" text-anchor="middle" fill="#ef4444" font-size="6" font-family="sans-serif">FastAPI</text>
+              <rect x="238" y="157" width="55" height="10" rx="5" fill="rgba(239,68,68,0.2)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
+              <text x="265" y="165" text-anchor="middle" fill="#ef4444" font-size="6" font-family="sans-serif">Docker</text>
+              <rect x="178" y="172" width="65" height="10" rx="5" fill="rgba(239,68,68,0.2)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
+              <text x="210" y="180" text-anchor="middle" fill="#ef4444" font-size="6" font-family="sans-serif">TypeScript</text>
+              <!-- Bottom chips -->
+              <rect x="10" y="200" width="75" height="12" rx="6" fill="rgba(168,85,247,0.15)" stroke="rgba(168,85,247,0.3)" stroke-width="1"/>
+              <text x="47" y="209" text-anchor="middle" fill="#a855f7" font-size="6" font-family="sans-serif">ATS Score</text>
+              <rect x="90" y="200" width="75" height="12" rx="6" fill="rgba(168,85,247,0.15)" stroke="rgba(168,85,247,0.3)" stroke-width="1"/>
+              <text x="127" y="209" text-anchor="middle" fill="#a855f7" font-size="6" font-family="sans-serif">JD Match %</text>
+              <rect x="170" y="200" width="75" height="12" rx="6" fill="rgba(236,72,153,0.15)" stroke="rgba(236,72,153,0.3)" stroke-width="1"/>
+              <text x="207" y="209" text-anchor="middle" fill="#ec4899" font-size="6" font-family="sans-serif">AI Rewrites</text>
+              <rect x="250" y="200" width="80" height="12" rx="6" fill="rgba(236,72,153,0.15)" stroke="rgba(236,72,153,0.3)" stroke-width="1"/>
+              <text x="290" y="209" text-anchor="middle" fill="#ec4899" font-size="6" font-family="sans-serif">Cover Letter</text>
+              <rect x="10" y="220" width="320" height="30" rx="8" fill="rgba(168,85,247,0.05)" stroke="rgba(168,85,247,0.1)" stroke-width="1"/>
+              <text x="170" y="238" text-anchor="middle" fill="rgba(168,85,247,0.5)" font-size="6.5" font-family="sans-serif">📊 Job Application Tracker — track every application in one dashboard</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two column - Financial Analyst + Lumen AI -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+
+        <!-- Financial Analyst Agent -->
+        <div class="reveal reveal-delay-3" style="background:var(--card);border:1px solid var(--border);overflow:hidden;position:relative;">
+          <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(to bottom,#22c55e,rgba(34,197,94,0.1));z-index:1;"></div>
+          <!-- Thumbnail -->
+          <div style="width:100%;height:200px;background:#080c14;position:relative;overflow:hidden;border-bottom:1px solid rgba(34,197,94,0.15);">
+            <svg width="100%" height="100%" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="200" fill="#080c14"/>
+              <!-- Supervisor center -->
+              <circle cx="200" cy="90" r="26" fill="rgba(34,197,94,0.12)" stroke="#22c55e" stroke-width="1.5"/>
+              <text x="200" y="87" text-anchor="middle" fill="#22c55e" font-size="7" font-family="monospace" font-weight="bold">SUPERVISOR</text>
+              <text x="200" y="97" text-anchor="middle" fill="rgba(34,197,94,0.5)" font-size="5.5" font-family="monospace">orchestrator</text>
+              <!-- Agent nodes -->
+              <circle cx="95" cy="35" r="18" fill="rgba(59,130,246,0.12)" stroke="#3b82f6" stroke-width="1"/>
+              <text x="95" y="33" text-anchor="middle" fill="#3b82f6" font-size="5.5" font-family="monospace">MARKET</text>
+              <text x="95" y="42" text-anchor="middle" fill="#3b82f6" font-size="5.5" font-family="monospace">DATA</text>
+              <circle cx="200" cy="14" r="13" fill="rgba(168,85,247,0.12)" stroke="#a855f7" stroke-width="1"/>
+              <text x="200" y="11" text-anchor="middle" fill="#a855f7" font-size="5" font-family="monospace">SEC 10-K</text>
+              <text x="200" y="19" text-anchor="middle" fill="#a855f7" font-size="5" font-family="monospace">RAG</text>
+              <circle cx="305" cy="35" r="18" fill="rgba(251,146,60,0.12)" stroke="#fb923c" stroke-width="1"/>
+              <text x="305" y="33" text-anchor="middle" fill="#fb923c" font-size="5.5" font-family="monospace">NEWS</text>
+              <text x="305" y="42" text-anchor="middle" fill="#fb923c" font-size="5.5" font-family="monospace">SENTIMENT</text>
+              <circle cx="75" cy="148" r="18" fill="rgba(239,68,68,0.12)" stroke="#ef4444" stroke-width="1"/>
+              <text x="75" y="145" text-anchor="middle" fill="#ef4444" font-size="5.5" font-family="monospace">RISK</text>
+              <text x="75" y="154" text-anchor="middle" fill="#ef4444" font-size="5.5" font-family="monospace">VETO ✗</text>
+              <circle cx="325" cy="148" r="18" fill="rgba(20,184,166,0.12)" stroke="#14b8a6" stroke-width="1"/>
+              <text x="325" y="145" text-anchor="middle" fill="#14b8a6" font-size="5.5" font-family="monospace">REPORT</text>
+              <text x="325" y="154" text-anchor="middle" fill="#14b8a6" font-size="5.5" font-family="monospace">WRITER</text>
+              <circle cx="200" cy="165" r="18" fill="rgba(234,179,8,0.12)" stroke="#eab308" stroke-width="1"/>
+              <text x="200" y="162" text-anchor="middle" fill="#eab308" font-size="5.5" font-family="monospace">FUND.</text>
+              <text x="200" y="171" text-anchor="middle" fill="#eab308" font-size="5.5" font-family="monospace">ANALYST</text>
+              <!-- Lines -->
+              <line x1="183" y1="74" x2="113" y2="49" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.5"/>
+              <line x1="200" y1="64" x2="200" y2="27" stroke="#a855f7" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.5"/>
+              <line x1="217" y1="74" x2="287" y2="49" stroke="#fb923c" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.5"/>
+              <line x1="182" y1="107" x2="93" y2="133" stroke="#ef4444" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.5"/>
+              <line x1="218" y1="107" x2="307" y2="133" stroke="#14b8a6" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.5"/>
+              <line x1="200" y1="116" x2="200" y2="147" stroke="#eab308" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.5"/>
+              <!-- Live trace -->
+              <rect x="348" y="5" width="48" height="190" rx="5" fill="rgba(34,197,94,0.04)" stroke="rgba(34,197,94,0.1)" stroke-width="1"/>
+              <text x="372" y="20" text-anchor="middle" fill="rgba(34,197,94,0.4)" font-size="5" font-family="monospace">TRACE</text>
+              <rect x="352" y="26" width="40" height="5" rx="2" fill="rgba(59,130,246,0.5)"/>
+              <rect x="352" y="35" width="30" height="5" rx="2" fill="rgba(168,85,247,0.5)"/>
+              <rect x="352" y="44" width="36" height="5" rx="2" fill="rgba(251,146,60,0.5)"/>
+              <rect x="352" y="53" width="24" height="5" rx="2" fill="rgba(239,68,68,0.5)"/>
+              <rect x="352" y="62" width="38" height="5" rx="2" fill="rgba(34,197,94,0.5)"/>
+              <!-- Price chart -->
+              <polyline points="8,192 40,184 75,187 110,177 145,180 180,170 215,173 250,163 285,167 320,156 345,160" fill="none" stroke="#22c55e" stroke-width="1.5" opacity="0.7"/>
+            </svg>
+            <div style="position:absolute;top:10px;left:16px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);padding:3px 10px;font-family:var(--mono);font-size:0.5rem;color:#22c55e;letter-spacing:0.1em;">MULTI-AGENT · RAG · SSE STREAMING</div>
+          </div>
+          <div style="padding:28px;">
+            <div style="font-family:var(--mono);font-size:0.55rem;letter-spacing:0.14em;color:#22c55e;text-transform:uppercase;margin-bottom:10px;">Multi-Agent · RAG · LLM</div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--cream);line-height:1.2;margin-bottom:10px;">Autonomous<br><em style="color:#22c55e;">Financial Analyst</em></h3>
+            <p style="font-size:0.84rem;line-height:1.75;color:rgba(236,228,212,0.6);margin-bottom:18px;">Hierarchical multi-agent system — supervisor orchestrates 6 specialized agents. RAG over SEC 10-K filings, real LLM tool-calling, risk-veto mechanism, and live SSE-streamed animated agent-graph UI.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px;">
+              <span class="tag">Multi-Agent</span><span class="tag">RAG</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">Docker</span>
+            </div>
+            <div style="display:flex;gap:10px;">
+              <a href="https://financial-analyst-agent.onrender.com" target="_blank" style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;color:var(--black);text-decoration:none;background:var(--gold);padding:8px 18px;display:inline-block;">Live ↗</a>
+              <a href="https://github.com/Bargavisivaraman/financial-analyst-agent" target="_blank" style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:8px 18px;display:inline-block;">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lumen AI -->
+        <div class="reveal reveal-delay-4" style="background:var(--card);border:1px solid var(--border);overflow:hidden;position:relative;">
+          <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(to bottom,#818cf8,rgba(129,140,248,0.1));z-index:1;"></div>
+          <!-- Thumbnail -->
+          <div style="width:100%;height:200px;background:#0a0a1a;position:relative;overflow:hidden;border-bottom:1px solid rgba(129,140,248,0.15);">
+            <svg width="100%" height="100%" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="200" fill="#0a0a1a"/>
+              <radialGradient id="lumGrad2" cx="30%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="#6366f1" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#0a0a1a" stop-opacity="0"/>
+              </radialGradient>
+              <rect width="400" height="200" fill="url(#lumGrad2)"/>
+              <!-- Nav bar -->
+              <rect x="0" y="0" width="400" height="28" fill="rgba(255,255,255,0.03)"/>
+              <text x="16" y="18" fill="#818cf8" font-size="10" font-family="sans-serif" font-weight="bold">Lumen AI</text>
+              <rect x="85" y="7" width="48" height="14" rx="7" fill="#818cf8" opacity="0.8"/>
+              <text x="109" y="18" text-anchor="middle" fill="white" font-size="7" font-family="sans-serif">Dashboard</text>
+              <text x="145" y="18" fill="rgba(255,255,255,0.3)" font-size="7" font-family="sans-serif">Quizzes</text>
+              <text x="185" y="18" fill="rgba(255,255,255,0.3)" font-size="7" font-family="sans-serif">Planner</text>
+              <!-- Chat panel -->
+              <rect x="8" y="34" width="195" height="120" rx="7" fill="rgba(255,255,255,0.03)" stroke="rgba(129,140,248,0.12)" stroke-width="1"/>
+              <text x="18" y="48" fill="rgba(255,255,255,0.25)" font-size="6" font-family="sans-serif">AI Tutor Chat</text>
+              <rect x="16" y="53" width="140" height="20" rx="5" fill="rgba(99,102,241,0.15)"/>
+              <text x="24" y="61" fill="rgba(255,255,255,0.6)" font-size="5.5" font-family="sans-serif">Hey! What are we learning today? 🎓</text>
+              <text x="24" y="69" fill="rgba(255,255,255,0.4)" font-size="5" font-family="sans-serif">Ask me anything — I am your AI tutor</text>
+              <rect x="55" y="78" width="130" height="14" rx="5" fill="rgba(99,102,241,0.5)"/>
+              <text x="120" y="88" text-anchor="middle" fill="white" font-size="5.5" font-family="sans-serif">Explain gradient descent</text>
+              <rect x="16" y="97" width="160" height="28" rx="5" fill="rgba(99,102,241,0.1)" stroke="rgba(99,102,241,0.15)" stroke-width="1"/>
+              <text x="24" y="107" fill="rgba(255,255,255,0.55)" font-size="5.5" font-family="sans-serif">Gradient descent is an optimization</text>
+              <text x="24" y="115" fill="rgba(255,255,255,0.55)" font-size="5.5" font-family="sans-serif">algorithm used to minimize a loss...</text>
+              <text x="24" y="123" fill="#818cf8" font-size="6" font-family="sans-serif">▌</text>
+              <rect x="16" y="130" width="44" height="12" rx="6" fill="rgba(99,102,241,0.08)"/>
+              <circle cx="26" cy="136" r="2" fill="#818cf8" opacity="0.5"/>
+              <circle cx="34" cy="136" r="2" fill="#818cf8" opacity="0.7"/>
+              <circle cx="42" cy="136" r="2" fill="#818cf8" opacity="0.5"/>
+              <!-- Stats panel -->
+              <rect x="210" y="34" width="182" height="55" rx="7" fill="rgba(255,255,255,0.03)" stroke="rgba(129,140,248,0.12)" stroke-width="1"/>
+              <text x="220" y="48" fill="rgba(255,255,255,0.25)" font-size="6" font-family="sans-serif">Study Analytics</text>
+              <rect x="218" y="53" width="48" height="26" rx="5" fill="rgba(99,102,241,0.12)"/>
+              <text x="242" y="63" text-anchor="middle" fill="#818cf8" font-size="12" font-family="monospace" font-weight="bold">12</text>
+              <text x="242" y="73" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="5" font-family="sans-serif">sessions</text>
+              <rect x="272" y="53" width="48" height="26" rx="5" fill="rgba(16,185,129,0.1)"/>
+              <text x="296" y="63" text-anchor="middle" fill="#10b981" font-size="12" font-family="monospace" font-weight="bold">87%</text>
+              <text x="296" y="73" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="5" font-family="sans-serif">quiz avg</text>
+              <rect x="326" y="53" width="58" height="26" rx="5" fill="rgba(251,146,60,0.1)"/>
+              <text x="355" y="63" text-anchor="middle" fill="#fb923c" font-size="11" font-family="monospace" font-weight="bold">5🔥</text>
+              <text x="355" y="73" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="5" font-family="sans-serif">streak</text>
+              <!-- Quiz panel -->
+              <rect x="210" y="95" width="182" height="60" rx="7" fill="rgba(255,255,255,0.03)" stroke="rgba(129,140,248,0.12)" stroke-width="1"/>
+              <text x="220" y="109" fill="rgba(255,255,255,0.25)" font-size="6" font-family="sans-serif">Adaptive Quiz · Machine Learning</text>
+              <text x="220" y="121" fill="rgba(255,255,255,0.55)" font-size="6" font-family="sans-serif">What does a loss function measure?</text>
+              <rect x="218" y="127" width="166" height="11" rx="5" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+              <text x="301" y="135" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="5.5" font-family="sans-serif">Error between predicted and actual</text>
+              <rect x="218" y="142" width="166" height="11" rx="5" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+              <text x="301" y="150" text-anchor="middle" fill="#10b981" font-size="5.5" font-family="sans-serif">✓ Difference between prediction &amp; truth</text>
+              <!-- Bottom bar -->
+              <rect x="8" y="162" width="384" height="30" rx="6" fill="rgba(99,102,241,0.05)" stroke="rgba(99,102,241,0.08)" stroke-width="1"/>
+              <text x="200" y="174" text-anchor="middle" fill="rgba(129,140,248,0.4)" font-size="5.5" font-family="sans-serif">📄 PDF Upload → AI Flashcards · 🎤 Voice I/O · 📊 Progress Dashboard</text>
+              <text x="200" y="184" text-anchor="middle" fill="rgba(129,140,248,0.25)" font-size="5" font-family="sans-serif">JWT Auth · PostgreSQL on Neon · Deployed on Vercel + Render</text>
+            </svg>
+            <div style="position:absolute;top:10px;right:12px;background:rgba(129,140,248,0.12);border:1px solid rgba(129,140,248,0.3);padding:3px 10px;font-family:var(--mono);font-size:0.5rem;color:#818cf8;letter-spacing:0.1em;">FULL-STACK · GPT-4 · VOICE I/O</div>
+          </div>
+          <div style="padding:28px;">
+            <div style="font-family:var(--mono);font-size:0.55rem;letter-spacing:0.14em;color:#818cf8;text-transform:uppercase;margin-bottom:10px;">Full-Stack · AI · Education</div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--cream);line-height:1.2;margin-bottom:10px;">Lumen AI<br><em style="color:#818cf8;">Teaching Assistant</em></h3>
+            <p style="font-size:0.84rem;line-height:1.75;color:rgba(236,228,212,0.6);margin-bottom:18px;">Full-stack AI learning platform with GPT-4 tutor chat, adaptive quizzes, study plan generation, PDF to flashcard pipeline, voice I/O, and analytics dashboard with streak detection.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px;">
+              <span class="tag">FastAPI</span><span class="tag">Next.js</span><span class="tag">GPT-4</span><span class="tag">PostgreSQL</span><span class="tag">TypeScript</span>
+            </div>
+            <div style="display:flex;gap:10px;">
+              <a href="https://lumen-ai-gilt.vercel.app/" target="_blank" style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;color:var(--black);text-decoration:none;background:var(--gold);padding:8px 18px;display:inline-block;">Live ↗</a>
+              <a href="https://github.com/Bargavisivaraman/lumen-ai" target="_blank" style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:8px 18px;display:inline-block;">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  >
+  <!-- BUILT PROJECTS -->
+  <section id="built-projects" style="background:var(--black);">
+    <div class="section-label reveal">Side Projects</div>
+    <h2 class="section-title reveal reveal-delay-1">My <em>side</em><br>projects</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-top:64px;">
+
+      <!-- Bloom Journal -->
+      <div class="work-card reveal reveal-delay-3" style="padding:0;overflow:hidden;border:1px solid var(--border);">
+        <div style="width:100%;height:200px;background:#1a0a1a;position:relative;overflow:hidden;border-bottom:1px solid var(--border);">
+          <svg width="100%" height="100%" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#fdf6f9"/>
+            <!-- sidebar -->
+            <rect x="0" y="0" width="90" height="200" fill="#f9eef4"/>
+            <rect x="0" y="0" width="3" height="200" fill="#e879a0"/>
+            <text x="14" y="22" fill="#e879a0" font-size="10" font-family="sans-serif" font-weight="bold">🌸 Bloom</text>
+            <rect x="10" y="34" width="65" height="18" rx="9" fill="#f3d0e3"/>
+            <text x="42" y="47" text-anchor="middle" fill="#c4547a" font-size="7" font-family="sans-serif">📖 Journal</text>
+            <text x="42" y="66" text-anchor="middle" fill="rgba(196,84,122,0.5)" font-size="7" font-family="sans-serif">😊 Mood</text>
+            <text x="42" y="82" text-anchor="middle" fill="rgba(196,84,122,0.5)" font-size="7" font-family="sans-serif">🙏 Gratitude</text>
+            <text x="42" y="98" text-anchor="middle" fill="rgba(196,84,122,0.5)" font-size="7" font-family="sans-serif">📊 Analytics</text>
+            <text x="42" y="114" text-anchor="middle" fill="rgba(196,84,122,0.5)" font-size="7" font-family="sans-serif">✨ Affirmations</text>
+            <!-- mood strip -->
+            <rect x="10" y="130" width="70" height="50" rx="8" fill="white" stroke="#f3d0e3" stroke-width="1"/>
+            <text x="45" y="144" text-anchor="middle" fill="#c4547a" font-size="6" font-family="sans-serif">Today's Mood</text>
+            <text x="20" y="166" font-size="14">😊</text>
+            <text x="36" y="166" font-size="14">😌</text>
+            <text x="52" y="166" font-size="14">🤩</text>
+            <text x="68" y="166" font-size="11" fill="#e879a0">●</text>
+            <!-- main area -->
+            <!-- affirmation card -->
+            <rect x="98" y="8" width="296" height="42" rx="8" fill="#fce4f0" stroke="#f3d0e3" stroke-width="1"/>
+            <text x="108" y="22" fill="#c4547a" font-size="6" font-family="sans-serif">✨ Today's Affirmation</text>
+            <text x="108" y="34" fill="#8b3a5a" font-size="7" font-family="sans-serif" font-style="italic">I am capable of creating meaningful work</text>
+            <text x="108" y="44" fill="#8b3a5a" font-size="7" font-family="sans-serif" font-style="italic">and building things that matter. 🌷</text>
+            <!-- journal entry card -->
+            <rect x="98" y="58" width="190" height="80" rx="8" fill="white" stroke="#f3d0e3" stroke-width="1"/>
+            <rect x="98" y="58" width="190" height="24" rx="8" fill="#f9eef4"/>
+            <text x="108" y="74" fill="#c4547a" font-size="7" font-family="sans-serif" font-weight="bold">New Entry</text>
+            <rect x="106" y="86" width="170" height="5" rx="2" fill="#f3d0e3"/>
+            <rect x="106" y="96" width="140" height="5" rx="2" fill="#f3d0e3"/>
+            <rect x="106" y="106" width="155" height="5" rx="2" fill="#f3d0e3"/>
+            <rect x="106" y="116" width="100" height="5" rx="2" fill="#f3d0e3"/>
+            <rect x="106" y="128" width="50" height="10" rx="5" fill="#e879a0"/>
+            <text x="131" y="136" text-anchor="middle" fill="white" font-size="6" font-family="sans-serif">Save 🌸</text>
+            <!-- mood chart -->
+            <rect x="296" y="58" width="98" height="80" rx="8" fill="white" stroke="#f3d0e3" stroke-width="1"/>
+            <text x="306" y="72" fill="#c4547a" font-size="6" font-family="sans-serif">Mood Trend</text>
+            <polyline points="304,118 316,108 328,112 340,100 352,104 364,94 376,98 386,88" fill="none" stroke="#e879a0" stroke-width="1.5"/>
+            <circle cx="304" cy="118" r="2" fill="#e879a0"/>
+            <circle cx="340" cy="100" r="2" fill="#e879a0"/>
+            <circle cx="386" cy="88" r="2.5" fill="#e879a0"/>
+            <!-- tags -->
+            <rect x="98" y="146" width="60" height="14" rx="7" fill="#f3d0e3"/>
+            <text x="128" y="156" text-anchor="middle" fill="#c4547a" font-size="6" font-family="sans-serif">Personal 🌷</text>
+            <rect x="164" y="146" width="55" height="14" rx="7" fill="#e8f4e8"/>
+            <text x="191" y="156" text-anchor="middle" fill="#4a7a4a" font-size="6" font-family="sans-serif">Goals 🎯</text>
+            <rect x="225" y="146" width="55" height="14" rx="7" fill="#e8eaf6"/>
+            <text x="252" y="156" text-anchor="middle" fill="#5c6bc0" font-size="6" font-family="sans-serif">School 📚</text>
+            <rect x="286" y="146" width="55" height="14" rx="7" fill="#fff8e1"/>
+            <text x="313" y="156" text-anchor="middle" fill="#f57f17" font-size="6" font-family="sans-serif">Travel ✈️</text>
+            <!-- streak -->
+            <rect x="98" y="168" width="296" height="24" rx="6" fill="#fce4f0" stroke="#f3d0e3" stroke-width="1"/>
+            <text x="108" y="183" fill="#c4547a" font-size="7" font-family="sans-serif">🔥 7-day streak  ·  ✍️ 42 entries  ·  🙏 28 gratitudes  ·  Light/Dark mode ✓</text>
+          </svg>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(232,121,160,0.15);border:1px solid rgba(232,121,160,0.4);padding:4px 10px;font-family:var(--mono);font-size:0.52rem;letter-spacing:0.1em;color:#e879a0;">REACT · FLASK · FULL-STACK</div>
+        </div>
+        <div style="padding:24px;">
+          <div class="card-org">React · Flask · Tailwind · Framer Motion · SQLite</div>
+          <div class="card-title">Bloom Journal 🌸</div>
+          <div class="card-desc">Full-stack digital diary with journaling, mood tracking, gratitude logs and daily affirmations. Features 4 custom pastel themes, light/dark mode, analytics dashboard with mood trends, writing streak tracking, and user auth — deployed on Render.</div>
+          <div class="card-tags" style="margin-top:16px;">
+            <span class="tag">React 19</span>
+            <span class="tag">Flask</span>
+            <span class="tag">Framer Motion</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">Recharts</span>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:18px;">
+            <a href="https://bloom-journal.onrender.com/" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--black);text-decoration:none;background:var(--gold);padding:7px 16px;display:inline-block;">Live ↗</a>
+            <a href="https://github.com/Bargavisivaraman/bloom-journal" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:7px 16px;display:inline-block;">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cleo AI -->
+      <div class="work-card reveal reveal-delay-1" style="padding:0;overflow:hidden;border:1px solid var(--border);">
+        <div style="width:100%;height:200px;background:#0f0f1a;position:relative;overflow:hidden;border-bottom:1px solid var(--border);">
+          <svg width="100%" height="100%" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#0f0f1a"/>
+            <rect x="0" y="0" width="90" height="200" fill="#141418"/>
+            <rect x="0" y="0" width="3" height="200" fill="#8b5cf6" opacity="0.4"/>
+            <rect x="10" y="16" width="50" height="8" rx="4" fill="#8b5cf6" opacity="0.6"/>
+            <rect x="8" y="54" width="74" height="28" rx="6" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.3)" stroke-width="1"/>
+            <rect x="108" y="20" width="180" height="40" rx="10" fill="#1e1e2a" stroke="rgba(139,92,246,0.15)" stroke-width="1"/>
+            <rect x="136" y="30" width="100" height="6" rx="3" fill="rgba(180,170,210,0.3)"/>
+            <rect x="136" y="42" width="72" height="4" rx="2" fill="rgba(180,170,210,0.15)"/>
+            <rect x="170" y="74" width="150" height="30" rx="10" fill="#7c3aed"/>
+            <rect x="182" y="84" width="88" height="6" rx="3" fill="rgba(255,255,255,0.6)"/>
+            <rect x="108" y="118" width="200" height="50" rx="10" fill="#1e1e2a" stroke="rgba(139,92,246,0.15)" stroke-width="1"/>
+            <rect x="120" y="128" width="140" height="5" rx="2" fill="rgba(180,170,210,0.3)"/>
+            <rect x="120" y="139" width="110" height="5" rx="2" fill="rgba(180,170,210,0.2)"/>
+            <rect x="100" y="178" width="290" height="16" rx="8" fill="#1a1a22" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+          </svg>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(139,92,246,0.2);border:1px solid rgba(139,92,246,0.4);padding:4px 10px;font-family:var(--mono);font-size:0.52rem;letter-spacing:0.1em;color:#a78bfa;">PYTHON · FLASK</div>
+        </div>
+        <div style="padding:24px;">
+          <div class="card-org">Python · Flask · OpenAI GPT-3.5</div>
+          <div class="card-title">Cleo AI Chatbot</div>
+          <div class="card-desc">Full-stack AI chatbot with multiple chat sessions, typing indicator, code syntax highlighting, dark/light mode and Lovable-inspired UI.</div>
+          <div class="card-tags" style="margin-top:16px;"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OpenAI API</span><span class="tag">JavaScript</span></div>
+          <div style="display:flex;gap:10px;margin-top:18px;">
+            <a href="https://ai-chatbot-so90.onrender.com" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--black);text-decoration:none;background:var(--gold);padding:7px 16px;display:inline-block;">Live ↗</a>
+            <a href="https://github.com/Bargavisivaraman/ai-chatbot" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:7px 16px;display:inline-block;">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SpendSmart -->
+      <div class="work-card reveal reveal-delay-2" style="padding:0;overflow:hidden;border:1px solid var(--border);">
+        <div style="width:100%;height:200px;background:#090b0f;position:relative;overflow:hidden;border-bottom:1px solid var(--border);">
+          <svg width="100%" height="100%" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#090b0f"/>
+            <rect x="0" y="0" width="70" height="200" fill="#0b0e14"/>
+            <rect x="0" y="0" width="3" height="200" fill="#00ff88" opacity="0.4"/>
+            <text x="10" y="22" fill="#00ff88" font-size="9" font-family="monospace">💸</text>
+            <rect x="78" y="8" width="74" height="42" rx="6" fill="#0f1318" stroke="rgba(0,255,136,0.15)" stroke-width="1"/>
+            <rect x="78" y="8" width="74" height="2" rx="1" fill="#00ff88"/>
+            <text x="115" y="40" text-anchor="middle" fill="#00ff88" font-size="13" font-family="monospace" font-weight="bold">$842</text>
+            <rect x="158" y="8" width="74" height="42" rx="6" fill="#0f1318" stroke="rgba(0,255,136,0.15)" stroke-width="1"/>
+            <text x="195" y="40" text-anchor="middle" fill="#63b3ed" font-size="13" font-family="monospace" font-weight="bold">12</text>
+            <rect x="238" y="8" width="74" height="42" rx="6" fill="#0f1318" stroke="rgba(0,255,136,0.15)" stroke-width="1"/>
+            <text x="275" y="40" text-anchor="middle" fill="#48bb78" font-size="13" font-family="monospace" font-weight="bold">$70</text>
+            <circle cx="120" cy="130" r="38" fill="none" stroke="#ff6b6b" stroke-width="14" stroke-dasharray="60 180" stroke-dashoffset="0" transform="rotate(-90 120 130)"/>
+            <circle cx="120" cy="130" r="38" fill="none" stroke="#a855f7" stroke-width="14" stroke-dasharray="50 180" stroke-dashoffset="-60" transform="rotate(-90 120 130)"/>
+            <polyline points="170,170 200,155 230,160 260,140 290,145 320,125 350,130 380,110" fill="none" stroke="#00ff88" stroke-width="2"/>
+          </svg>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3);padding:4px 10px;font-family:var(--mono);font-size:0.52rem;letter-spacing:0.1em;color:#00ff88;">JS · CHART.JS</div>
+        </div>
+        <div style="padding:24px;">
+          <div class="card-org">HTML · CSS · JavaScript · Chart.js</div>
+          <div class="card-title">SpendSmart Tracker</div>
+          <div class="card-desc">Dashboard-style expense tracker with donut &amp; line charts, budget alerts, category breakdown and filter/sort functionality.</div>
+          <div class="card-tags" style="margin-top:16px;"><span class="tag">JavaScript</span><span class="tag">Chart.js</span><span class="tag">localStorage</span></div>
+          <div style="display:flex;gap:10px;margin-top:18px;">
+            <a href="https://bargavisivaraman.github.io/expense-tracker" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--black);text-decoration:none;background:var(--gold);padding:7px 16px;display:inline-block;">Live ↗</a>
+            <a href="https://github.com/Bargavisivaraman/expense-tracker" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:7px 16px;display:inline-block;">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Study Timer -->
+      <div class="work-card reveal reveal-delay-3" style="padding:0;overflow:hidden;border:1px solid var(--border);">
+        <div style="width:100%;height:200px;background:#f5ede0;position:relative;overflow:hidden;border-bottom:1px solid var(--border);">
+          <svg width="100%" height="100%" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#f5ede0"/>
+            <rect x="10" y="10" width="55" height="18" rx="9" fill="#c47c3e"/>
+            <text x="37" y="23" text-anchor="middle" fill="white" font-size="8" font-family="sans-serif">☕ cozy</text>
+            <circle cx="100" cy="120" r="52" fill="none" stroke="rgba(196,124,62,0.15)" stroke-width="8"/>
+            <circle cx="100" cy="120" r="52" fill="none" stroke="#c47c3e" stroke-width="8" stroke-linecap="round" stroke-dasharray="327 327" stroke-dashoffset="82" transform="rotate(-90 100 120)"/>
+            <text x="100" y="115" text-anchor="middle" fill="#3d2b1a" font-size="18" font-family="serif" font-weight="600">18:42</text>
+            <text x="100" y="130" text-anchor="middle" fill="#a08060" font-size="7" font-family="monospace">FOCUS TIME</text>
+            <rect x="168" y="40" width="220" height="145" rx="10" fill="white" stroke="rgba(107,76,42,0.12)" stroke-width="1"/>
+            <rect x="178" y="68" width="190" height="28" rx="6" fill="rgba(245,237,224,0.8)"/>
+            <rect x="178" y="102" width="190" height="28" rx="6" fill="rgba(245,237,224,0.5)"/>
+          </svg>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(196,124,62,0.15);border:1px solid rgba(196,124,62,0.35);padding:4px 10px;font-family:var(--mono);font-size:0.52rem;letter-spacing:0.1em;color:#c47c3e;">4 THEMES</div>
+        </div>
+        <div style="padding:24px;">
+          <div class="card-org">HTML · CSS · JavaScript · Canvas API</div>
+          <div class="card-title">Cozy Study Timer</div>
+          <div class="card-desc">Aesthetic Pomodoro timer with 4 switchable themes, 5 lofi music streams, rain animation, task list and mood tracker.</div>
+          <div class="card-tags" style="margin-top:16px;"><span class="tag">JavaScript</span><span class="tag">Canvas API</span><span class="tag">CSS Themes</span></div>
+          <div style="display:flex;gap:10px;margin-top:18px;">
+            <a href="https://bargavisivaraman.github.io/study-timer" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--black);text-decoration:none;background:var(--gold);padding:7px 16px;display:inline-block;">Live ↗</a>
+            <a href="https://github.com/Bargavisivaraman/study-timer" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:7px 16px;display:inline-block;">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RPS Arcade -->
+      <div class="work-card reveal reveal-delay-4" style="padding:0;overflow:hidden;border:1px solid var(--border);">
+        <div style="width:100%;height:200px;background:#ffd6ec;position:relative;overflow:hidden;border-bottom:1px solid var(--border);">
+          <svg width="100%" height="100%" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#ffd6ec"/>
+            <text x="200" y="30" text-anchor="middle" fill="#ff3d9a" font-size="16" font-family="monospace" font-weight="bold" letter-spacing="2">ROCK PAPER SCISSORS</text>
+            <rect x="40" y="56" width="320" height="52" rx="6" fill="#2d1b35"/>
+            <text x="115" y="97" text-anchor="middle" fill="#ffd93d" font-size="22" font-family="monospace" font-weight="bold">3</text>
+            <text x="200" y="87" text-anchor="middle" fill="#ff6eb4" font-size="9" font-family="monospace">VS</text>
+            <text x="285" y="97" text-anchor="middle" fill="#ffd93d" font-size="22" font-family="monospace" font-weight="bold">1</text>
+            <rect x="60" y="118" width="70" height="55" rx="4" fill="white" stroke="#ff8c69" stroke-width="2"/>
+            <text x="95" y="152" text-anchor="middle" font-size="24">🪨</text>
+            <rect x="165" y="118" width="70" height="55" rx="4" fill="white" stroke="#69b4ff" stroke-width="2"/>
+            <text x="200" y="152" text-anchor="middle" font-size="24">📄</text>
+            <rect x="270" y="118" width="70" height="55" rx="4" fill="white" stroke="#69d469" stroke-width="2"/>
+            <text x="305" y="152" text-anchor="middle" font-size="24">✂️</text>
+          </svg>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(155,89,182,0.2);border:1px solid rgba(155,89,182,0.4);padding:4px 10px;font-family:var(--mono);font-size:0.52rem;letter-spacing:0.1em;color:#9b59b6;">PIXEL THEME</div>
+        </div>
+        <div style="padding:24px;">
+          <div class="card-org">HTML · CSS · JavaScript</div>
+          <div class="card-title">RPS Arcade Game</div>
+          <div class="card-desc">Pink Mario-themed Rock Paper Scissors with pixel fonts, 3-2-1 countdown, AI shuffle animation and win streak tracker.</div>
+          <div class="card-tags" style="margin-top:16px;"><span class="tag">JavaScript</span><span class="tag">CSS Animations</span><span class="tag">Game Logic</span></div>
+          <div style="display:flex;gap:10px;margin-top:18px;">
+            <a href="https://bargavisivaraman.github.io/rps-arcade" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--black);text-decoration:none;background:var(--gold);padding:7px 16px;display:inline-block;">Live ↗</a>
+            <a href="https://github.com/Bargavisivaraman/rps-arcade" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:7px 16px;display:inline-block;">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Mini Mario Platformer -->
+      <div class="work-card reveal reveal-delay-5" style="padding:0;overflow:hidden;border:1px solid var(--border);">
+        <div style="width:100%;height:200px;background:#1a0a2e;position:relative;overflow:hidden;border-bottom:1px solid var(--border);">
+          <svg width="100%" height="100%" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#1a0a2e"/>
+            <circle cx="30" cy="20" r="1" fill="white" opacity="0.6"/>
+            <circle cx="150" cy="25" r="1" fill="white" opacity="0.7"/>
+            <circle cx="300" cy="18" r="1" fill="white" opacity="0.6"/>
+            <circle cx="350" cy="30" r="14" fill="#ffd700" opacity="0.8"/>
+            <circle cx="356" cy="26" r="11" fill="#1a0a2e"/>
+            <rect x="0" y="160" width="400" height="40" fill="#2d5a1b"/>
+            <rect x="60" y="120" width="80" height="12" rx="3" fill="#4a8a2e"/>
+            <rect x="200" y="100" width="80" height="12" rx="3" fill="#4a8a2e"/>
+            <rect x="290" y="130" width="70" height="12" rx="3" fill="#4a8a2e"/>
+            <rect x="86" y="104" width="20" height="14" rx="2" fill="#e63946"/>
+            <rect x="88" y="98" width="16" height="10" rx="5" fill="#e63946"/>
+            <rect x="90" y="96" width="12" height="6" rx="2" fill="#f4a261"/>
+            <circle cx="240" cy="85" r="8" fill="#ffd700" opacity="0.9"/>
+            <text x="240" y="89" text-anchor="middle" fill="#8B6914" font-size="7" font-family="monospace" font-weight="bold">$</text>
+            <rect x="130" y="78" width="20" height="20" rx="3" fill="#f4a261"/>
+            <text x="140" y="92" text-anchor="middle" fill="white" font-size="11" font-family="monospace" font-weight="bold">?</text>
+            <text x="10" y="20" fill="white" font-size="8" font-family="monospace" font-weight="bold">SCORE: 8400</text>
+            <text x="200" y="53" text-anchor="middle" fill="#ffd700" font-size="11" font-family="monospace" font-weight="bold">MINI MARIO PLATFORMER</text>
+          </svg>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.4);padding:4px 10px;font-family:var(--mono);font-size:0.52rem;letter-spacing:0.1em;color:#ffd700;">JS · CANVAS API</div>
+        </div>
+        <div style="padding:24px;">
+          <div class="card-org">HTML · CSS · JavaScript · Canvas API</div>
+          <div class="card-title">Mini Mario Platformer</div>
+          <div class="card-desc">Browser-based Mario-style platformer built to learn game dev fundamentals — physics, collision detection, animation loops and keyboard controls.</div>
+          <div class="card-tags" style="margin-top:16px;"><span class="tag">JavaScript</span><span class="tag">Canvas API</span><span class="tag">Game Physics</span></div>
+          <div style="display:flex;gap:10px;margin-top:18px;">
+            <a href="https://bargavisivaraman.github.io/mini-mario-platformer/" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--black);text-decoration:none;background:var(--gold);padding:7px 16px;display:inline-block;">Live ↗</a>
+            <a href="https://github.com/Bargavisivaraman/mini-mario-platformer" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:7px 16px;display:inline-block;">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" style="background:var(--deep);">
+    <div class="section-label reveal">Skills</div>
+    <h2 class="section-title reveal reveal-delay-1">Tools &amp; <em>technologies</em></h2>
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:80px;margin-top:64px;align-items:start;">
+      <div>
+        <div class="reveal reveal-delay-2">
+          <div style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">Languages</div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px;">
+            <div><div style="display:flex;justify-content:space-between;"><span style="font-size:0.82rem;color:var(--cream);">Python</span><span style="font-family:var(--mono);font-size:0.6rem;color:var(--muted);">92%</span></div><div style="height:2px;background:var(--muted2);margin-top:6px;position:relative;"><div class="skill-fill" data-width="92" style="position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,0.5));width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;"><span style="font-size:0.82rem;color:var(--cream);">JavaScript</span><span style="font-family:var(--mono);font-size:0.6rem;color:var(--muted);">85%</span></div><div style="height:2px;background:var(--muted2);margin-top:6px;position:relative;"><div class="skill-fill" data-width="85" style="position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,0.5));width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;"><span style="font-size:0.82rem;color:var(--cream);">Java</span><span style="font-family:var(--mono);font-size:0.6rem;color:var(--muted);">80%</span></div><div style="height:2px;background:var(--muted2);margin-top:6px;position:relative;"><div class="skill-fill" data-width="80" style="position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,0.5));width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;"><span style="font-size:0.82rem;color:var(--cream);">SQL</span><span style="font-family:var(--mono);font-size:0.6rem;color:var(--muted);">88%</span></div><div style="height:2px;background:var(--muted2);margin-top:6px;position:relative;"><div class="skill-fill" data-width="88" style="position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,0.5));width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;"><span style="font-size:0.82rem;color:var(--cream);">React / Next.js</span><span style="font-family:var(--mono);font-size:0.6rem;color:var(--muted);">82%</span></div><div style="height:2px;background:var(--muted2);margin-top:6px;position:relative;"><div class="skill-fill" data-width="82" style="position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,0.5));width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;"><span style="font-size:0.82rem;color:var(--cream);">HTML / CSS</span><span style="font-family:var(--mono);font-size:0.6rem;color:var(--muted);">90%</span></div><div style="height:2px;background:var(--muted2);margin-top:6px;position:relative;"><div class="skill-fill" data-width="90" style="position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,0.5));width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2" style="display:flex;flex-wrap:wrap;gap:12px;align-content:start;">
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);transition:all 0.3s ease;">MongoDB</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Supabase</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Firebase</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Machine Learning</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Feature Engineering</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">FastAPI</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Computer Vision</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Jira</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Git / GitHub</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Agile / Scrum</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Docker</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Anthropic API</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">RAG Systems</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Multi-Agent AI</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Data Structures &amp; Algorithms</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">CI/CD Pipelines</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Linux / CLI</div>
+        <div style="padding:10px 18px;border:1px solid var(--border);font-size:0.78rem;color:rgba(236,228,212,0.6);">Hyperspectral Imaging</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" style="background:var(--black);">
+    <div class="section-label reveal">Achievements</div>
+    <h2 class="section-title reveal reveal-delay-1">Awards &amp;<br><em>recognition</em></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:64px;align-items:start;">
+      <div class="reveal reveal-delay-2" style="position:relative;">
+        <img src="assets/images/award-csunposium-first-place.jpg" alt="CSUNposium First Place Award" style="width:100%;border:1px solid var(--border);display:block;border-radius:4px;" class="pop-img" width="932" height="538" loading="lazy" decoding="async" />
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(8,8,8,0.95),transparent);padding:24px 20px 20px;">
+          <div style="font-family:var(--mono);font-size:0.55rem;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;">🥇 First Place</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--cream);">30th Annual CSUNposium</div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-3" style="display:flex;flex-direction:column;gap:20px;">
+        <div style="background:var(--card);border:1px solid var(--border);padding:28px;">
+          <div style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;">🏆 CSUNposium 2025 · 1st Place</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--cream);line-height:1.3;margin-bottom:14px;">Early Prediction &amp; Temporal Analysis of Growth and Stress for Soybean in Controlled Environments</div>
+          <div style="font-size:0.85rem;line-height:1.75;color:rgba(236,228,212,0.6);">Built an ML pipeline to detect plant stress before it's visible to the human eye — achieving <strong style="color:var(--cream);">96.4% accuracy</strong> and <strong style="color:var(--cream);">Day 2 early detection</strong>. Used Grounded SAM 2 for zero-shot text-prompted segmentation, hyperspectral feature extraction, vegetation index computation, and XGBoost classification.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;"><span class="tag">XGBoost</span><span class="tag">Hyperspectral</span><span class="tag">Grounded SAM 2</span><span class="tag">Python</span><span class="tag">ML Pipeline</span></div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);padding:24px;">
+          <div style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;">📜 Certifications</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;font-size:0.82rem;color:rgba(236,228,212,0.65);">✦ <span>Wells Fargo — Software Engineering Job Simulation (Forage)</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:0.82rem;color:rgba(236,228,212,0.65);">✦ <span>JPMorganChase — Software Engineering Job Simulation (Forage)</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:0.82rem;color:rgba(236,228,212,0.65);">✦ <span>Introduction to Agent Skills (Anthropic)</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:0.82rem;color:rgba(236,228,212,0.65);">✦ <span>Claude with the Anthropic API</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:0.82rem;color:rgba(236,228,212,0.65);">✦ <span>Claude 101</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:0.82rem;color:rgba(236,228,212,0.65);">✦ <span>Database Integration and Management (Microsoft)</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:0.82rem;color:rgba(236,228,212,0.65);">✦ <span>Foundations of Coding: Full-Stack (Microsoft)</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:0.82rem;color:rgba(236,228,212,0.65);">✦ <span>HTML, CSS, and JavaScript for Web Developers (Johns Hopkins University)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- BEYOND THE RESUME -->
+  <section id="beyond" style="background:var(--black);">
+    <div class="section-label reveal">Beyond the Resume</div>
+    <h2 class="section-title reveal reveal-delay-1">The people<br><em>behind the work</em></h2>
+
+    <div class="reveal reveal-delay-2" style="max-width:760px;margin-top:48px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:300;line-height:1.65;color:rgba(236,228,212,0.8);">
+        I got my first job at <span style="color:var(--gold);font-style:italic;">eighteen</span>, working the front desk at AS CSUN. I was bad at it at first, genuinely. I'd freeze up when someone was upset about a compliance issue or a sprint that fell apart, and I had to learn fast how to stay calm, ask the right questions, and actually fix the problem instead of just nodding along.
+      </p>
+      <p style="font-size:0.88rem;line-height:1.75;color:rgba(236,228,212,0.6);margin-top:16px;">
+        Almost three years later, that same team is who I text first when something good or stressful happens. If you hire me, here's what you're actually getting: someone who learns fast, stays calm when a deadline or a person is falling apart, asks instead of assuming, and shows up for the team the way mine showed up for me.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;">
+        <span class="tag">Team Leadership</span>
+        <span class="tag">Conflict Resolution</span>
+        <span class="tag">Mentorship</span>
+        <span class="tag">Adaptability</span>
+        <span class="tag">Cross-functional Collaboration</span>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-3" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;">
+      <img src="assets/images/team-associated-students.jpg" alt="Team at Associated Students CSUN" style="width:100%;height:220px;object-fit:contain;background:#000;border:1px solid var(--border);display:block;"  class="pop-img" width="610" height="800" loading="lazy" decoding="async" />
+      <img src="assets/images/team-building.jpg" alt="Team building event" style="width:100%;height:220px;object-fit:contain;background:#000;border:1px solid var(--border);display:block;"  class="pop-img" width="601" height="800" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="background:var(--deep);">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-title reveal reveal-delay-1">Let's<br><em>connect</em></h2>
+    <div style="margin-top:64px;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start;">
+      <div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;font-style:italic;line-height:1.2;color:rgba(236,228,212,0.5);margin-top:16px;">Open to<br><span style="color:var(--gold);font-style:normal;">Internships, Fall Co-op</span><br>&amp; Full-Time Roles.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:8px;">
+        <a class="contact-link" id="emailLink" href="#" onclick="var e='bargavisivaraman28'+'@'+'gmail.com';window.open('mailto:'+e);return false;">
+          <div class="contact-link-icon">✉</div>
+          <div class="contact-link-info"><div class="contact-link-label">Email</div><div class="contact-link-value">bargavisivaraman28&#64;gmail.com</div></div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+        <a class="contact-link" href="tel:3237704765">
+          <div class="contact-link-icon">✆</div>
+          <div class="contact-link-info"><div class="contact-link-label">Phone</div><div class="contact-link-value">(323) 770-4765</div></div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/bargavisivaraman" target="_blank" rel="noopener">
+          <div class="contact-link-icon">in</div>
+          <div class="contact-link-info"><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">linkedin.com/in/bargavisivaraman</div></div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+        <a class="contact-link" href="https://github.com/Bargavisivaraman" target="_blank" rel="noopener">
+          <div class="contact-link-icon">&lt;/&gt;</div>
+          <div class="contact-link-info"><div class="contact-link-label">GitHub</div><div class="contact-link-value">github.com/Bargavisivaraman</div></div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding:40px 60px;border-top:1px solid var(--muted2);display:flex;justify-content:space-between;align-items:center;background:var(--black);">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--muted);">Bargavi Sivaraman</div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;color:var(--muted);">© 2026 · Bargavi Sivaraman · <a href="https://github.com/Bargavisivaraman" target="_blank" style="color:var(--gold);text-decoration:none;">GitHub ↗</a></div>
+  </footer>
+
+</div>
+
+<div class="notif" id="notif"></div>
+
+<canvas id="heroCanvas" style="position:absolute;top:0;left:0;pointer-events:none;z-index:0;"></canvas>
+
+<script>
+// scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      entry.target.querySelectorAll('.skill-fill[data-width]').forEach(bar => {
+        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 200);
+      });
+    }
+  });
+}, { threshold: 0.01, rootMargin: '0px 0px -5% 0px' });
+reveals.forEach(el => obs.observe(el));
+
+// nav active
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : ''; });
+});
+
+// particles
+window.addEventListener('load', function(){
+  var c = document.getElementById('heroCanvas');
+  var hero = document.getElementById('hero');
+  var ctx = c.getContext('2d');
+  c.width = hero.offsetWidth || window.innerWidth;
+  c.height = hero.offsetHeight || window.innerHeight;
+  window.addEventListener('resize', function(){ c.width = hero.offsetWidth; c.height = hero.offsetHeight; });
+  var p = [];
+  for(var i=0;i<60;i++) p.push({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*2+1.2,t:Math.random()*6.28});
+  function frame(){
+    ctx.clearRect(0,0,c.width,c.height);
+    for(var i=0;i<p.length;i++) for(var j=i+1;j<p.length;j++){
+      var dx=p[i].x-p[j].x,dy=p[i].y-p[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<140){ctx.globalAlpha=(1-d/140)*.35;ctx.strokeStyle='#c9a84c';ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(p[i].x,p[i].y);ctx.lineTo(p[j].x,p[j].y);ctx.stroke();}
+    }
+    for(var i=0;i<p.length;i++){
+      p[i].t+=.015;p[i].x+=p[i].vx;p[i].y+=p[i].vy;
+      if(p[i].x<0)p[i].x=c.width;if(p[i].x>c.width)p[i].x=0;
+      if(p[i].y<0)p[i].y=c.height;if(p[i].y>c.height)p[i].y=0;
+      ctx.globalAlpha=.5+Math.sin(p[i].t)*.25;ctx.fillStyle='#c9a84c';
+      ctx.beginPath();ctx.arc(p[i].x,p[i].y,p[i].r,0,6.28);ctx.fill();
+    }
+    ctx.globalAlpha=1;requestAnimationFrame(frame);
+  }
+  frame();
+});
+
+// cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+if(cursor && ring){
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  function animCursor(){
+    rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+    cursor.style.left=mx+'px';cursor.style.top=my+'px';
+    ring.style.left=rx+'px';ring.style.top=ry+'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+}
+
+// skill bars
+const skillSection = document.getElementById('skills');
+if(skillSection){
+  const skillObs = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting) document.querySelectorAll('.skill-fill').forEach(bar => { setTimeout(()=>{bar.style.width=bar.dataset.width+'%';},300); });
+  }, {threshold:0.2});
+  skillObs.observe(skillSection);
+}
+</script>
+</body>
+</html>
