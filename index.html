@@ -80,7 +80,7 @@
     .hero-photo-frame { position: relative; width: 100%; max-width: 340px; }
     .hero-photo-frame::before { content: ''; position: absolute; inset: -2px; background: linear-gradient(135deg, var(--gold), transparent 60%); z-index: 0; }
     .hero-photo-frame::after { content: ''; position: absolute; top: 16px; left: 16px; right: -16px; bottom: -16px; border: 1px solid var(--gold-dim); z-index: -1; }
-    .hero-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; position: relative; z-index: 1; filter: grayscale(20%) contrast(1.05); }
+    .hero-photo { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; object-position: center top; display: block; position: relative; z-index: 1; filter: grayscale(20%) contrast(1.05); }
     .hero-photo-badge { position: absolute; bottom: -20px; left: -20px; z-index: 10; background: var(--card); border: 1px solid var(--border); padding: 14px 20px; display: flex; align-items: center; gap: 14px; }
     .badge-nasa { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
     .badge-nasa-logo { display: flex; align-items: center; gap: 6px; }
@@ -239,6 +239,36 @@
 
     .pop-img { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; cursor: none; }
     .pop-img:hover { transform: scale(1.06) translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); z-index: 5; position: relative; }
+
+    /* ---- Uniform media tiles (organized, click-to-zoom galleries) ---- */
+    .media-tile { position: relative; display: block; width: 100%; padding: 0; margin: 0; overflow: hidden; border: 1px solid var(--border); background: #0a0a0a; cursor: none; }
+    .media-tile img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.7s cubic-bezier(0.19,1,0.22,1); }
+    .media-tile:hover img { transform: scale(1.05); }
+    .media-tile::after { content: '⤢ View'; position: absolute; left: 12px; bottom: 12px; font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); background: rgba(8,8,8,0.55); border: 1px solid var(--border); padding: 5px 9px; opacity: 0; transform: translateY(6px); transition: opacity 0.35s ease, transform 0.35s ease; z-index: 2; }
+    .media-tile:hover::after { opacity: 1; transform: translateY(0); }
+
+    .research-gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 4px; }
+    .research-gallery .media-tile { flex: 0 1 calc(33.333% - 10px); min-width: 240px; aspect-ratio: 4 / 3; }
+
+    .beyond-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
+    .beyond-photos .media-tile { aspect-ratio: 1 / 1; }
+
+    @media (max-width: 820px) {
+      .research-gallery .media-tile { flex-basis: calc(50% - 7px); }
+    }
+    @media (max-width: 520px) {
+      .research-gallery .media-tile { flex-basis: 100%; }
+      .beyond-photos { grid-template-columns: 1fr; }
+    }
+
+    /* ---- Lightbox (view full uncropped image) ---- */
+    .lightbox { position: fixed; inset: 0; z-index: 9999; display: none; align-items: center; justify-content: center; padding: 6vh 5vw; background: rgba(6,6,6,0.95); cursor: none; }
+    .lightbox.open { display: flex; animation: lbFade 0.25s ease; }
+    @keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+    .lightbox img { max-width: 92vw; max-height: 82vh; object-fit: contain; border: 1px solid var(--gold-dim); box-shadow: 0 30px 90px rgba(0,0,0,0.7); }
+    .lb-cap { position: absolute; left: 0; right: 0; bottom: 3vh; text-align: center; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .lb-close { position: absolute; top: 3vh; right: 4vw; width: 46px; height: 46px; display: grid; place-items: center; font-size: 1.6rem; color: var(--cream); background: rgba(8,8,8,0.5); border: 1px solid var(--border); cursor: none; }
+    .lb-close:hover { border-color: var(--gold); color: var(--gold); }
     </style>
 </head>
 <body>
@@ -437,12 +467,22 @@
         <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;">📸 In the Lab &amp; At CSUNposium</div>
         <a href="https://csun-arcs-astrocultivators.github.io/astro-cultivators-data-analysis-website/index.html#home" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:7px 16px;display:inline-block;transition:all 0.3s ease;">Project Site ↗</a>
       </div>
-      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:auto auto;gap:12px;">
-        <img src="assets/images/research-presenting-csunposium.jpg" alt="Bargavi presenting at CSUNposium" style="width:100%;height:100%;object-fit:cover;border:1px solid var(--border);grid-row:1/3;min-height:320px;"  class="pop-img" width="900" height="697" loading="lazy" decoding="async" />
-        <img src="assets/images/research-growth-chamber.jpg" alt="Growth chamber data collection" style="width:100%;height:100%;object-fit:cover;border:1px solid var(--border);"  class="pop-img" width="900" height="675" loading="lazy" decoding="async" />
-        <img src="assets/images/research-poster.jpg" alt="Presenting research poster" style="width:100%;height:100%;object-fit:cover;border:1px solid var(--border);"  class="pop-img" width="900" height="589" loading="lazy" decoding="async" />
-        <img src="assets/images/research-plant-imaging.jpg" alt="Plant imaging setup" style="width:100%;height:100%;object-fit:cover;border:1px solid var(--border);"  class="pop-img" width="900" height="673" loading="lazy" decoding="async" />
-        <img src="assets/images/research-team-csunposium.jpg" alt="Research team at CSUNposium" style="width:100%;height:100%;object-fit:cover;border:1px solid var(--border);"  class="pop-img" width="674" height="900" loading="lazy" decoding="async" />
+      <div class="research-gallery">
+        <button type="button" class="media-tile" data-full="assets/images/research-presenting-csunposium.jpg" data-cap="Presenting research at CSUNposium">
+          <img src="assets/images/research-presenting-csunposium.jpg" alt="Bargavi presenting at CSUNposium" loading="lazy" decoding="async" />
+        </button>
+        <button type="button" class="media-tile" data-full="assets/images/research-growth-chamber.jpg" data-cap="Growth chamber data collection">
+          <img src="assets/images/research-growth-chamber.jpg" alt="Growth chamber data collection" loading="lazy" decoding="async" />
+        </button>
+        <button type="button" class="media-tile" data-full="assets/images/research-poster.jpg" data-cap="In the lab · Astro-Cultivator research">
+          <img src="assets/images/research-poster.jpg" alt="In the lab during Astro-Cultivator research" loading="lazy" decoding="async" />
+        </button>
+        <button type="button" class="media-tile" data-full="assets/images/research-plant-imaging.jpg" data-cap="Plant imaging setup">
+          <img src="assets/images/research-plant-imaging.jpg" alt="Plant imaging setup" loading="lazy" decoding="async" />
+        </button>
+        <button type="button" class="media-tile" data-full="assets/images/research-team-csunposium.jpg" data-cap="Research team at CSUNposium">
+          <img src="assets/images/research-team-csunposium.jpg" alt="Research team at CSUNposium" loading="lazy" decoding="async" />
+        </button>
       </div>
       <p style="font-size:0.78rem;line-height:1.7;color:rgba(236,228,212,0.45);margin-top:16px;font-family:var(--mono);">
         Note: this project's codebase is maintained under CSUN ARCS / NASA-affiliated organizational access and isn't publicly hosted, per program guidelines — the project site above documents the data analysis and results.
@@ -1043,9 +1083,9 @@
     <div class="section-label reveal">Achievements</div>
     <h2 class="section-title reveal reveal-delay-1">Awards &amp;<br><em>recognition</em></h2>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:64px;align-items:start;">
-      <div class="reveal reveal-delay-2" style="position:relative;">
-        <img src="assets/images/award-csunposium-first-place.jpg" alt="CSUNposium First Place Award" style="width:100%;border:1px solid var(--border);display:block;border-radius:4px;" class="pop-img" width="932" height="538" loading="lazy" decoding="async" />
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(8,8,8,0.95),transparent);padding:24px 20px 20px;">
+      <div class="reveal reveal-delay-2" style="position:relative;cursor:none;" data-full="assets/images/award-csunposium-first-place.jpg" data-cap="First Place — 30th Annual CSUNposium">
+        <img src="assets/images/award-csunposium-first-place.jpg" alt="CSUNposium First Place Award" style="width:100%;border:1px solid var(--border);display:block;border-radius:4px;" width="932" height="538" loading="lazy" decoding="async" />
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(8,8,8,0.95),transparent);padding:24px 20px 20px;pointer-events:none;">
           <div style="font-family:var(--mono);font-size:0.55rem;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;">🥇 First Place</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--cream);">30th Annual CSUNposium</div>
         </div>
@@ -1096,9 +1136,13 @@
       </div>
     </div>
 
-    <div class="reveal reveal-delay-3" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;">
-      <img src="assets/images/team-associated-students.jpg" alt="Team at Associated Students CSUN" style="width:100%;height:220px;object-fit:contain;background:#000;border:1px solid var(--border);display:block;"  class="pop-img" width="610" height="800" loading="lazy" decoding="async" />
-      <img src="assets/images/team-building.jpg" alt="Team building event" style="width:100%;height:220px;object-fit:contain;background:#000;border:1px solid var(--border);display:block;"  class="pop-img" width="601" height="800" loading="lazy" decoding="async" />
+    <div class="reveal reveal-delay-3 beyond-photos">
+      <button type="button" class="media-tile" data-full="assets/images/team-associated-students.jpg" data-cap="With the AS CSUN team">
+        <img src="assets/images/team-associated-students.jpg" alt="Team at Associated Students CSUN" loading="lazy" decoding="async" />
+      </button>
+      <button type="button" class="media-tile" data-full="assets/images/team-building.jpg" data-cap="Team building event">
+        <img src="assets/images/team-building.jpg" alt="Team building event" loading="lazy" decoding="async" />
+      </button>
     </div>
   </section>
 
@@ -1221,6 +1265,38 @@ if(skillSection){
   }, {threshold:0.2});
   skillObs.observe(skillSection);
 }
+
+// lightbox — click any photo to view it full and uncropped
+document.addEventListener('DOMContentLoaded', function(){
+  var lb=document.getElementById('lightbox');
+  if(!lb) return;
+  var lbImg=document.getElementById('lbImg'), lbCap=document.getElementById('lbCap');
+  function openLb(src, cap){
+    lbImg.setAttribute('src', src); lbImg.setAttribute('alt', cap||'');
+    lbCap.textContent = cap||'';
+    lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+  function closeLb(){
+    lb.classList.remove('open'); lb.setAttribute('aria-hidden','true');
+    document.body.style.overflow=''; lbImg.setAttribute('src','');
+  }
+  document.querySelectorAll('[data-full]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      openLb(el.getAttribute('data-full'), el.getAttribute('data-cap'));
+    });
+  });
+  lb.addEventListener('click', closeLb);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLb(); });
+});
 </script>
+
+<!-- Lightbox overlay -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+  <div class="lb-close" id="lbClose" aria-label="Close">&times;</div>
+  <img id="lbImg" src="" alt="" />
+  <div class="lb-cap" id="lbCap"></div>
+</div>
 </body>
 </html>
