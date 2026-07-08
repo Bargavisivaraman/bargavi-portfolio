@@ -1,0 +1,31 @@
+name: Keep Render demos awake
+
+# Render free-tier web services sleep after ~15 min of inactivity, then take
+# 15-30s to cold-start on the next visit. This pings them every ~10 min during
+# Los Angeles daytime hours so a recruiter clicking a demo gets an instant load.
+# Scoped to daytime (8am-10pm PT) to stay within Render's free monthly hours.
+#
+# LA is UTC-7 (PDT). 8am-10pm PT == 15:00 UTC through 05:00 UTC next day.
+# Note: GitHub-hosted cron is best-effort and may be delayed under load.
+
+on:
+  schedule:
+    - cron: '*/10 15-23,0-5 * * *'
+  workflow_dispatch: {}        # lets you run it manually from the Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping live demos
+        run: |
+          urls=(
+            "https://financial-analyst-agent.onrender.com/api/health"
+            "https://bloom-journal.onrender.com/api/affirmation/today"
+            "https://ai-chatbot-so90.onrender.com"
+          )
+          for url in "${urls[@]}"; do
+            echo "Pinging $url"
+            curl -sS -o /dev/null -w "  -> HTTP %{http_code} in %{time_total}s\n" \
+              -L --max-time 60 -A "keep-alive-bot" "$url" || echo "  -> no response (will retry next run)"
+          done
