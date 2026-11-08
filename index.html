@@ -38,14 +38,19 @@
       --muted2: #3a3530;
       --nasa-blue: #0b3d91;
       --nasa-red: #fc3d21;
+      --mono: 'DM Mono', monospace;
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--cream); font-family: 'Syne', sans-serif; cursor: none; overflow-x: hidden; }
+    body { background: var(--black); color: var(--cream); font-family: 'Syne', sans-serif; overflow-x: hidden; }
 
-    /* CURSOR */
-    #cursor { position: fixed; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s ease; }
-    #cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--gold-dim); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.15s ease; }
+    /* CURSOR — custom dot only on devices with a real pointer; phones keep defaults */
+    #cursor, #cursor-ring { display: none; }
+    @media (hover: hover) and (pointer: fine) {
+      body, body a, body button { cursor: none; }
+      #cursor { display: block; position: fixed; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 10001; transform: translate(-50%,-50%); transition: transform 0.1s ease; }
+      #cursor-ring { display: block; position: fixed; width: 36px; height: 36px; border: 1px solid var(--gold-dim); border-radius: 50%; pointer-events: none; z-index: 10000; transform: translate(-50%,-50%); transition: all 0.15s ease; }
+    }
 
     /* GRAIN */
     body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 200px; pointer-events: none; z-index: 1000; opacity: 0.45; }
@@ -222,6 +227,14 @@
     .reveal-delay-4 { transition-delay: 0.4s; }
     .reveal-delay-5 { transition-delay: 0.5s; }
 
+    /* Mid widths: 9 links don't fit at full size — tighten before hiding */
+    nav { gap: 24px; }
+    .nav-logo { flex-shrink: 0; }
+    @media (max-width: 1240px) {
+      nav { padding: 24px 32px; }
+      .nav-links { gap: 22px; }
+      .nav-links a { font-size: 0.62rem; letter-spacing: 0.08em; white-space: nowrap; }
+    }
     @media (max-width: 960px) {
       nav { padding: 24px 28px; }
       .nav-links { display: none; }
@@ -314,7 +327,7 @@
       </p>
       <div class="hero-stats-row">
         <div class="hero-stat">
-          <div class="hero-stat-num">2+</div>
+          <div class="hero-stat-num">3+</div>
           <div class="hero-stat-label">Years Exp.</div>
         </div>
         <div class="hero-stat">
@@ -366,8 +379,6 @@
         <div class="detail-block reveal reveal-delay-3">
           <div class="detail-label">Languages</div>
           <div class="detail-value">English (Professional) · Tamil (Native)<br>Korean · Spanish · Hindi · Telugu</div>
-        </div>
-        
         </div>
       </div>
     </div>
@@ -506,7 +517,7 @@
     <div class="work-grid">
       <div class="work-card reveal reveal-delay-1">
         <div class="card-num">01</div>
-        <div class="card-org">ARCS at CSUN · NASA/JPL</div>
+        <div class="card-org">ARCS at CSUN · NASA/JPL · Sep 2025 – Present</div>
         <div class="card-title">ARCS Research Fellow</div>
         
         <div class="card-desc">Designing end-to-end ML pipelines for the Astro-Cultivator project. Contributing to system architecture, backend workflow design, and cross-functional Agile collaboration.</div>
@@ -709,7 +720,7 @@
               <a href="https://financial-analyst-agent.onrender.com" target="_blank" style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;color:var(--black);text-decoration:none;background:var(--gold);padding:8px 18px;display:inline-block;">Live ↗</a>
               <a href="https://github.com/Bargavisivaraman/financial-analyst-agent" target="_blank" style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:8px 18px;display:inline-block;">GitHub ↗</a>
             </div>
-            <div style="font-family:var(--mono);font-size:0.52rem;letter-spacing:0.06em;color:rgba(236,228,212,0.4);margin-top:10px;">⏳ First load may take ~20s (free-tier server spins up)</div>
+            <div style="font-family:var(--mono);font-size:0.52rem;letter-spacing:0.06em;color:rgba(236,228,212,0.4);margin-top:10px;">⏳ Free-tier server naps when idle — first load can take up to a minute</div>
           </div>
         </div>
 
@@ -793,7 +804,6 @@
     </div>
   </section>
 
-  >
   <!-- BUILT PROJECTS -->
   <section id="built-projects" style="background:var(--black);">
     <div class="section-label reveal">Side Projects</div>
@@ -875,7 +885,7 @@
             <a href="https://bloom-journal.onrender.com/" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--black);text-decoration:none;background:var(--gold);padding:7px 16px;display:inline-block;">Live ↗</a>
             <a href="https://github.com/Bargavisivaraman/bloom-journal" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:7px 16px;display:inline-block;">GitHub ↗</a>
           </div>
-          <div style="font-family:var(--mono);font-size:0.52rem;letter-spacing:0.06em;color:rgba(236,228,212,0.4);margin-top:10px;">⏳ First load may take ~20s (free-tier server spins up)</div>
+          <div style="font-family:var(--mono);font-size:0.52rem;letter-spacing:0.06em;color:rgba(236,228,212,0.4);margin-top:10px;">⏳ Free-tier server naps when idle — first load can take up to a minute</div>
         </div>
       </div>
 
@@ -909,7 +919,7 @@
             <a href="https://ai-chatbot-so90.onrender.com" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--black);text-decoration:none;background:var(--gold);padding:7px 16px;display:inline-block;">Live ↗</a>
             <a href="https://github.com/Bargavisivaraman/ai-chatbot" target="_blank" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);text-decoration:none;border:1px solid var(--muted2);padding:7px 16px;display:inline-block;">GitHub ↗</a>
           </div>
-          <div style="font-family:var(--mono);font-size:0.52rem;letter-spacing:0.06em;color:rgba(236,228,212,0.4);margin-top:10px;">⏳ First load may take ~20s (free-tier server spins up)</div>
+          <div style="font-family:var(--mono);font-size:0.52rem;letter-spacing:0.06em;color:rgba(236,228,212,0.4);margin-top:10px;">⏳ Free-tier server naps when idle — first load can take up to a minute</div>
         </div>
       </div>
 
@@ -1166,7 +1176,7 @@
         <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;font-style:italic;line-height:1.2;color:rgba(236,228,212,0.5);margin-top:16px;">Open to<br><span style="color:var(--gold);font-style:normal;">Internships, Fall Co-op</span><br>&amp; Full-Time Roles.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:0;margin-top:8px;">
-        <a class="contact-link" id="emailLink" href="#" onclick="var e='bargavisivaraman28'+'@'+'gmail.com';window.open('mailto:'+e);return false;">
+        <a class="contact-link" id="emailLink" href="#" onclick="var e='bargavisivaraman28'+'@'+'gmail.com';window.location.href='mailto:'+e;return false;">
           <div class="contact-link-icon">✉</div>
           <div class="contact-link-info"><div class="contact-link-label">Email</div><div class="contact-link-value">bargavisivaraman28&#64;gmail.com</div></div>
           <div class="contact-link-arrow">→</div>
@@ -1195,11 +1205,7 @@
     <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;color:var(--muted);">© 2026 · Bargavi Sivaraman · <a href="https://github.com/Bargavisivaraman" target="_blank" style="color:var(--gold);text-decoration:none;">GitHub ↗</a></div>
   </footer>
 
-</div>
-
-<div class="notif" id="notif"></div>
-
-<canvas id="heroCanvas" style="position:absolute;top:0;left:0;pointer-events:none;z-index:0;"></canvas>
+<canvas id="heroCanvas" style="position:absolute;top:0;left:0;pointer-events:none;z-index:0;" aria-hidden="true"></canvas>
 
 <script>
 // scroll reveal
