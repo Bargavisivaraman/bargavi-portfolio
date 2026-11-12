@@ -20,6 +20,7 @@ jobs:
       - name: Ping live demos
         run: |
           urls=(
+            "https://landtherole-ai.onrender.com/warmup"
             "https://financial-analyst-agent.onrender.com/api/health"
             "https://bloom-journal.onrender.com/api/affirmation/today"
             "https://ai-chatbot-so90.onrender.com"
